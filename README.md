@@ -23,7 +23,7 @@ I denne guiden deler vi sågar inn koden vår i tre hovedpakker:
 I tillegg vil vi benytte oss av en datastruktur for rutenett som er mer generell, og som skal være i pakken
  - *inf101.grid*
 
-Det hele kjøres fra `TetrisMain` i pakken *inf101v22.tetris*, som inneholder main-metoden. Foreløpig viser den bare en enkel gui med noen eksempeler på tilfeldige figurer, men når vi er ferdig starter vi Tetris fra main-metoden her.
+Det hele kjøres fra `TetrisMain` i pakken *inf101.tetris*, som inneholder main-metoden. Foreløpig viser den bare en enkel gui med noen eksempeler på tilfeldige figurer, men når vi er ferdig starter vi Tetris fra main-metoden her.
 
 ### Modell
 
