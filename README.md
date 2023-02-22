@@ -55,23 +55,14 @@ På samme måte som for visningen, er kontrolleren avhengig av tilgang til model
 ## Steg for steg
 
 1. [Opprett en grid -klasse](./guide/01-grid.md)
-
 2. [Tegne brettet](./guide/02-tegnrutenett.md)
-
 3. [Tegne en fallende brikke](./guide/03-tegnbrikke.md)
-
 4. [Flytte en fallende brikke](./guide/04-flyttebrikke.md)
-
 5. [Rotere en fallende brikke](./guide/05-roterebrikke.md)
-
 6. [Droppe den fallende brikken, og håndtere Game Over](./guide/06-droppebrikke.md)
-
 7. [Fjern fulle rekker](./guide/07-fjernefullerekker.md)
-
 8. [En timer flytter brikkene periodisk nedover](./guide/08-timer.md)
-
 9. (Frivillig) [Flere idéer](./guide/09-ideer.md)
-
 10. Fyll ut svar på spørsmålene i [SVAR.md](./SVAR.md)
 
 ## Vurdering
