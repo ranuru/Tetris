@@ -16,12 +16,12 @@ Vi baserer modellen vår på design -prinsippet om [model-view-controller](https
  - hvordan modellen *kontrolleres* av brukeren.
 
 I denne guiden deler vi sågar inn koden vår i tre hovedpakker: 
- - *inf101.v23.tetris.model*
- - *inf101.v23.tetris.view*
- - *inf101.v23.tetris.controller*
+ - *inf101.tetris.model*
+ - *inf101.tetris.view*
+ - *inf101.tetris.controller*
 
 I tillegg vil vi benytte oss av en datastruktur for rutenett som er mer generell, og som skal være i pakken
- - *inf101.v23.grid*
+ - *inf101.grid*
 
 Det hele kjøres fra `TetrisMain` i pakken *inf101v22.tetris*, som inneholder main-metoden. Foreløpig viser den bare en enkel gui med noen eksempeler på tilfeldige figurer, men når vi er ferdig starter vi Tetris fra main-metoden her.
 
