@@ -31,7 +31,7 @@ For å representere et spill med Tetris, er det to hoved-elementer vi må holde 
  - et *brett* med fliser, og
  - en *fallende brikke*.
 
-Vi identifiserer følgende klasser som egner seg for pakken *inf101v22.tetris.model*:
+Vi identifiserer følgende klasser som egner seg for pakken *inf101.tetris.model*:
  - `TetrisModel` en klasse som representerer tilstanden til et komplett spill med Tetris. Denne klassen vil ha feltvariabler som representerer brettet med fliser og den fallende brikken, samt informasjon om spillet er game over.
  - `TetrisBoard` en klasse som representerer et brett med fliser. Dette er i bunn og grunn et rutenett.
  - `Tetromino` er en klasse som representerer en tetris-brikke.
