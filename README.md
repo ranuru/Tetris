@@ -69,10 +69,10 @@ På samme måte som for visningen, er kontrolleren avhengig av tilgang til model
 
 I denne oppgaven vil du bli vurdert ut ifra følgende kriterier:
 
- - Funksjonalitet (6 poeng)
+ - Funksjonalitet (5 poeng)
  - Dokumentasjon (2 poeng)
  - Kodestil (2 poeng)
- - Testing (2 poeng)
+ - Testing (3 poeng)
  - Besvarelser på spørsmål (3 poeng)
 
  ## Samarbeid
