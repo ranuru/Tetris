@@ -26,6 +26,7 @@ Når testen din for rotasjonen passerer, er du klar til å fortsette:
 - I `ControllableTetrisModel` definerer vi en metode for å rotere brikken.
 - I `TetrisController` kaller vi overnevnte metode når brukeren trykker pil opp.
 - I `TetrisModel` implementerer vi metoden på samme måte som vi gjorde for flyttingen: henter en rotert kopi, sjekker om den er lovlig, og hvis ja: oppdater feltvariabelen.
+- I `TestTetrisModel`, skriv en metode som tester metoden som roterer den fallende tetrominoen.
 
 ---
 
