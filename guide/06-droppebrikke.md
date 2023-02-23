@@ -16,6 +16,7 @@ Når du er ferdig med dette kapittelet, kan du droppe brikker ved å trykke på 
     - En hjelpemetode for å lime fast den fallende tetrominoen til brettet. I denne metoden itererer du over koordinatene til tetrominoen, og oppdaterer verdiene på brette i disse posisjonene. På slutten av denne metoden, gjør et kall til metoden som henter en ny brikke.
 
     - Til slutt, selve metoden som dropper en brikke. Her flytter du brikken ett og ett steg nedover i en løkke (har vi allerede en hjelpe-metode vi kan bruke?) så lenge det er mulig. Når det ikke lengre er mulig å flytte brikken nedover, limer vi den fast til brettet og henter en ny fallende brikke.
+- Skriv en test i `TestTetrisModel` som tester dropping av brikke.
 
 ## Håndtere Game Over
 
