@@ -12,8 +12,9 @@ Selv om timeren er en del av kontrollen, må vi først forberede modellen med de
 - Definer i `ControllableTetrisModel` en metode som henter ut hvor mange millisekunder det skal være mellom hvert klokkeslag (f. eks. vil en returverdi på 1000 bety 1 sekunder mellom hver gang tetrominoen faller).
 - I `TetrisModel`, implementer overnevnte metode. For å gjøre dette kan du i første omgang alltid returnere 1000 (denne metoden kan endres dersom du velger å gjøre bonusoppgaven med å ha økende vanskelighetsgrad i spillet)
 - Definer i `ControllableTetrisModel` en metode `clockTick` som er den metoden som kalles hver gang klokken slår. 
-- Implemtenter clockTick-metoden i `TetrisModel`:
+- Implementer clockTick-metoden i `TetrisModel`:
     - Flytt den fallende brikken en rad nedover. Dersom den ikke fikk lov til å flytte seg (sjekk returverdien!), lim den fast i stedet.
+- Skriv en test for clockTick-metoden i `TestTetrisModel`
 
 ## Kontrollen 
 
