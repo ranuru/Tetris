@@ -72,6 +72,11 @@ For å gi beskjed til visningen at modellen har endret seg, gjør vi et kall til
 
 > Forskjellen på å kalle *paintComponent* og å kalle *repaint* handler om hvilken "tråd" som gjennomfører tegningen. Når det gjøres et kall til keyPressed, skjer dette i en annen tråd parallelt med tråden som har ansvar for visningen. Dersom paintComponent kalles direkte fra keyPressed, kan det derfor skje at to tråder prøver å tegne visningen samtidig, noe som kan gi mye krøll. Det eneste som skjer i *repaint* er at det legges inn en bestilling til visningstråden om å gjøre et kall til *paintComponent*. I praksis går det bare millisekunder før *paintComponent* da blir kalt (men mye kan jo skje på et millisekund i en datamaskin).
 
+
+### Testing
+
+* Skriv en metode i `TestTetrisModel` som tester *moveTetromino*-metoden.
+
 ---
 
 :white_check_mark:  Du kan gå videre til neste kapittel når du kan flytte brikken med piltastene nedover brettet. Pass på at du ikke kan flytte deg ut av brettet eller plassere deg "over" et av hjørnene vi har fargelagt, og at det heller ikke krasjer når du forsøker.
