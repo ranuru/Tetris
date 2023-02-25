@@ -86,7 +86,7 @@ public class GridTest {
   }
   
   @Test
-  void throwsExceptionWheenCoordinateOffGrid() {
+  void throwsExceptionWhenCoordinateOffGrid() {
     IGrid<String> grid = new Grid<>(3, 2, "x");
     
     try {

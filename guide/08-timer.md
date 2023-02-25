@@ -9,7 +9,7 @@ Når du er ferdig med dette kapittelet, vil brikken falle av seg selv uten at br
 ## Modellen
 
 Selv om timeren er en del av kontrollen, må vi først forberede modellen med den informasjonen kontrollen trenger.
-- Definer i `ControllableTetrisModel` en metode som henter ut hvor mange millisekunder det skal være mellom hvert klokkeslag (f. eks. vil en returverdi på 1000 bety 1 sekunder mellom hver gang tetrominoen faller).
+- Definer i `ControllableTetrisModel` en metode som henter ut hvor mange millisekunder (som integer) det skal være mellom hvert klokkeslag (f. eks. vil en returverdi på 1000 bety 1 sekunder mellom hver gang tetrominoen faller).
 - I `TetrisModel`, implementer overnevnte metode. For å gjøre dette kan du i første omgang alltid returnere 1000 (denne metoden kan endres dersom du velger å gjøre bonusoppgaven med å ha økende vanskelighetsgrad i spillet)
 - Definer i `ControllableTetrisModel` en metode `clockTick` som er den metoden som kalles hver gang klokken slår. 
 - Implementer clockTick-metoden i `TetrisModel`:
@@ -18,12 +18,12 @@ Selv om timeren er en del av kontrollen, må vi først forberede modellen med de
 
 ## Kontrollen 
 
-Nå til selve timeren. Vi skal bruke en timer som er en del av swing-rammeverket, og tanken er å håndere klokkeslag som kommer fra timeren i klassen `TetrisController`. For å kunne gjøre dette, må TetrisController ha en metode med en parameter av typen *ActionListener* (importeres fra *java.awt.event*).
+Nå til selve timeren. Vi skal bruke en timer som er en del av swing-rammeverket, og tanken er å håndere klokkeslag som kommer fra timeren i klassen `TetrisController`. For å kunne gjøre dette, må TetrisController ha en metode med en parameter av typen *ActionEvent* (importeres fra *java.awt.event*).
 
-- Opprett en metode `clockTick` med en parameter av typen *ActionListener*.
+- Opprett en metode `clockTick` med en parameter av typen *ActionEvent*.
 - Opprett en instansvariabel av typen *Timer* (importeres fra *javax.swing* -- pass på, den skal *ikke* importeres fra java.utils) og initialiser den i konstruktøren til *TetrisController*. Konstruktøren til Timer tar to argumenter: 
     * *hvor ofte* den skal gjøre noe (en int med antall millisekunder), og
-    * *hva* den skal gjøre (en metode med ActionListener -parameter).
+    * *hva* den skal gjøre (en metode med ActionEvent -parameter).
     
 For eksempel:
 ```java

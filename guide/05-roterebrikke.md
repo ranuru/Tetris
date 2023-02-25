@@ -7,7 +7,7 @@ Når du er ferdig med dette kapittelet, kan du rotere brikken ved å trykke på 
 [<img src="./pics/rotatePiece.gif"  width="300">](./pics/rotatePiece.gif)
 
 
-- I `Tetromino` -klassen, opprett en metode for å lage en rotert kopi av deg selv.
+- I `Tetromino` -klassen, opprett en metode for å lage en rotert kopi av seg selv.
 - Begynn med å skrive testene for dette i *TestTetromino*: skriv for eksempel en test for `T` -brikken.
 
 ![Illustrasjon av rotasjon](./pics/rotation.png)

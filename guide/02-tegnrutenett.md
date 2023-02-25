@@ -19,7 +19,7 @@ Nå du er ferdig med dette kapittelet, skal du kunne kjøre programmet og bli vi
 * [Oppdater foretrukket størrelse](#oppdater-foretrukket-størrelse-frivillig)
 
 ## Opprett en visning
-Opprett en klasse `TetrisView` som utvider JPanel og opprett også et grensesnitt `ViewableTetrisModel` i pakken *inf101v22.tetris.view*
+Opprett en klasse `TetrisView` som utvider JPanel og opprett også et grensesnitt `ViewableTetrisModel` i pakken *no.uib.inf101.tetris.view*
 - Ta utgangspunkt i klassen SampleView når du oppretter TetrisView (du kan selvfølgelig fjerne metodene paintSample og drawChess).
 - La TetrisView ha en konstruktør som tar en ViewableTetrisModel som parameter. Lagre den som en instans-variabel.
 
@@ -34,12 +34,12 @@ Vi må definere metoder i `ViewableTetrisModel` slik at `TetrisView` kan hente u
 
 ## Opprett en modell
 
-Alle filene i dette avsnittet hører hjemme i pakken *inf101v22.tetris.model*. Du må opprette denne pakken selv. Den viktigste klassen i denne pakken er `TetrisModel`, og den skal implementerer ViewableTetrisModel. Men aller først:
+Alle filene i dette avsnittet hører hjemme i pakken *no.uib.inf101.tetris.model*. Du må opprette denne pakken selv. Den viktigste klassen i denne pakken er `TetrisModel`, og den skal implementerer ViewableTetrisModel. Men aller først:
 - Opprett en klasse `TetrisBoard` som *utvider* Grid&lt;Character&gt;. Objekter i denne klassen representerer et tetrisbrett. Legg merke til at TetrisBoard-objekter derfor *er* et Grid&lt;Character&gt;-objekter, og arver alle metodene i Grid-klassen.
     * La konstruktøren ha to parametre: antall rader og antall kolonner på brettet.
-    * I konstruktøren til `TetrisModel`, initialiser alle posisjonene i rutenettet med verdien `'-'`. Denne verdien representerer at Tetris-brettet er tomt i den gitte posisjonen.
+    * I konstruktøren til `TetrisBoard`, initialiser alle posisjonene i rutenettet med verdien `'-'`. Denne verdien representerer at Tetris-brettet er tomt i den gitte posisjonen.
 
-Oppretter nå `TetrisModel`, og la klassen implementere ViewableTetrisModel.
+Opprett nå `TetrisModel`, og la klassen implementere ViewableTetrisModel.
 - La konstruktøren ha to parametre: antall rader og antall kolonner på brettet.
 - La TetrisModel ha en instansvariabel av typen TetrisBoard. Initialiser variabelen i konstruktøren.
 - La TetrisModel implementere metodene fra ViewableTetrisModel. Du har tilgang til alt du trenger i instansvariabelen vi nettopp opprettet.
@@ -106,7 +106,7 @@ Vi skal nå implementere selve tegningen i `TetrisView`, altså den delen av kod
 **Parametre**
  * en `Graphics2D` -variabel for lerretet det skal tegnes på.
  
-Metoden ikke-static, og har derfor tilgang til alle instansvariabler.
+Metoden er ikke-static, og har derfor tilgang til alle instansvariabler.
 
 **Hensikt** 
 Å tegne selve spill-elementene i Tetris.

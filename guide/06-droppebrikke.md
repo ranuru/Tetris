@@ -22,8 +22,8 @@ Når du er ferdig med dette kapittelet, kan du droppe brikker ved å trykke på 
 
 Når spillet er game over skal vi vise en "Game over" -skjerm i visningen, og tastene skal ikke kunne flytte på brikkene mer.
 For at visningen og kontrolleren skal kunne tilpasse oppførselen sin, må vi ha en tilstandsvariabel i modellen som forteller hvorvidt vi er game over eller ikke. 
- - Opprett en enum `GameScreen` i *inf101v22.tetris.model* som har tilstandene ACTIVE_GAME og GAME_OVER. Vi kan da enkelt legger til f. eks. WELCOME_SCREEN senere om vi ønsker.
- - La både `TetrisViewable` og `ControllableTetrisModel` ha en metode `getGameScreen` som returnerer et objekt av typen GameScreen.
+ - Opprett en enum `GameScreen` i *no.uib.inf101.tetris.model* som har tilstandene ACTIVE_GAME og GAME_OVER. Vi kan da enkelt legger til f. eks. WELCOME_SCREEN senere om vi ønsker.
+ - La både `ViewableTetrisModel` og `ControllableTetrisModel` ha en metode `getGameScreen` som returnerer et objekt av typen GameScreen.
  - La `TetrisModel` ha en feltvariabel av typen GameScreen. I første omgang kan vi initiere den til GameScreen.ACTIVE_GAME. La metoden getGameScreen returnere denne variabelen.
 
 Spillet er over når det ikke er plass til å hente en ny fallende brikke.

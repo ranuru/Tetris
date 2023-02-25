@@ -32,7 +32,7 @@ Før tetromino-brikken kan tegnes, må vi opprette en struktur i modellen vår f
 
 ## Modellen
 
-I modellen oppretter vi en pakke _inf101v22.tetris.model.**tetromino**_. I denne pakken skal vi opprette et grensesnitt `TetrominoFactory` og to klasser: `Tetromino` og `RandomTetrominoFactory`.
+I modellen oppretter vi en pakke _no.uib.inf101.tetris.model.**tetromino**_. I denne pakken skal vi opprette et grensesnitt `TetrominoFactory` og to klasser: `Tetromino` og `RandomTetrominoFactory`.
 
 ### Tetromino
 Opprett en klasse `Tetromino` som representerer en tetromino. Denne klassen skal være uforanderlig, det vil si at når et objekt først er opprettet skal det ikke kunne muteres.
@@ -81,7 +81,7 @@ Slik vi skrev *newTetromino*-metoden, vil alle opprettede Tetromino-objekter ha 
 
 #### Tetromino skal være iterable
 
-For at en bruker av et Tetromino -objekt skal få vite noen om tetrominoen, lar vi `Tetromino` implementere grensesnittet `Iterable<GridCell<Character>>`. Implementer iterator-metoden slik at den itererer over kun de reelle posisjonene tetrominoen dekker.
+For at en bruker av et Tetromino -objekt skal få vite noe om tetrominoen, lar vi `Tetromino` implementere grensesnittet `Iterable<GridCell<Character>>`. Implementer iterator-metoden slik at den itererer over kun de reelle posisjonene tetrominoen dekker.
 
 
 > Tips til implementasjon av iterator-metoden: opprett en liste som skal inneholde `GridCell<Character>` -objekter. Benytt en dobbel for-løkke for å gå gjennom alle posisjoner i fasongen -- dersom fasongen er `true` på en posisjon, regn ut hvilken posisjon dette tilsvarer på brettet og legg til et nytt GridCell-objekt i listen. Til slutt, gjør et kall til `.iterator` på listen og returner resultatet.
@@ -90,7 +90,7 @@ For at en bruker av et Tetromino -objekt skal få vite noen om tetrominoen, lar 
 
 Implementer hashCode og equals.
 
-> Husk å benytte *Arrays.deepEquals* når du sammenligner fasongene, og benytt *Arrays.deepHashCode* for å regne ut hashCode for fasongene. For eksempel, for å regne ut hashCode: `Objects.hash(this.symbol, Arrays.deepHashCode(this.shape), this.pos)`)
+> Husk å benytte *Arrays.deepEquals* når du sammenligner fasongene, og benytt *Arrays.deepHashCode* for å regne ut hashCode for fasongene. For eksempel, for å regne ut hashCode: `Objects.hash(this.symbol, Arrays.deepHashCode(this.shape), this.pos)`
 
 
 #### TestTetromino

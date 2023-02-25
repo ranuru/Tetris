@@ -6,7 +6,7 @@ Når du er ferdig med dette kapittelet, kan du flytte brikken med piltastene ned
 
 [<img src="./pics/movePiece.gif"  width="250">](./pics/movePiece.gif)
 
-I dette steget skal vi opprette en kontrollklasse for spillet vårt. I pakken *inf101v22.tetris.controller* oppretter vi
+I dette steget skal vi opprette en kontrollklasse for spillet vårt. I pakken *no.uib.inf101.tetris.controller* oppretter vi
 - en klasse `TetrisController`, og
 - et grensesnitt `ControllableTetrisModel`.
 
