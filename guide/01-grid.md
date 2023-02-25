@@ -14,7 +14,6 @@ Implementer klassene, `Grid`, `CellPosition` og `GridCell` i pakken *no.uib.inf1
  - Opprett en klasse `Grid` som representerer et grid. Gridet skal ha en generisk typeparameter `<E`>, og må implementere grensesnittet `IGrid<E>` som ligger klart fra før. 
     - Begynn med å opprette alle metoder som kreves av grensesnittet, men som i første omgang returner "dummy" verdier (e.g. 0 eller `null` alt ettersom). Dette kan gjøres ved «quick fix» eller lignende.
     - Se på javadoc-kommentarene i IGrid og se på hvordan testene i `GridTest` er skrevet for å se hvilke metoder og konstruktører du trenger å implementere.
-      > Husk at det går an å kalle på en konstruktør fra en annen for å unngå å repetere deg selv.
 
 
 ## Iterable&lt;GridCell&lt;E&gt;&gt;
