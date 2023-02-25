@@ -37,6 +37,7 @@ Vi må definere metoder i `ViewableTetrisModel` slik at `TetrisView` kan hente u
 Alle filene i dette avsnittet hører hjemme i pakken *no.uib.inf101.tetris.model*. Du må opprette denne pakken selv. Den viktigste klassen i denne pakken er `TetrisModel`, og den skal implementerer ViewableTetrisModel. Men aller først:
 - Opprett en klasse `TetrisBoard` som *utvider* Grid&lt;Character&gt;. Objekter i denne klassen representerer et tetrisbrett. Legg merke til at TetrisBoard-objekter derfor *er* et Grid&lt;Character&gt;-objekter, og arver alle metodene i Grid-klassen.
     * La konstruktøren ha to parametre: antall rader og antall kolonner på brettet.
+    * La konstruktøren gjøre et kall til super-konstruktøren.
     * I konstruktøren til `TetrisBoard`, initialiser alle posisjonene i rutenettet med verdien `'-'`. Denne verdien representerer at Tetris-brettet er tomt i den gitte posisjonen.
 
 Opprett nå `TetrisModel`, og la klassen implementere ViewableTetrisModel.
