@@ -8,8 +8,8 @@ Nå du er ferdig med dette kapittelet, skal du kunne kjøre programmet og bli vi
 
 * [Opprett en visning](#opprett-en-visning)
 * [Opprett en modell](#opprett-en-modell)
-    * [Testing underveis](#testing-underveis)
 * [Knyt det sammen](#knyt-det-sammen)
+    * [Testing underveis](#testing-underveis)
 * [Tegn brettet](#tegn-brettet)
     * [drawGame](#drawgame)
     * [drawCells](#drawcells)
@@ -30,7 +30,7 @@ For å tegne brettet trenger `TetrisView` å vite
 
 Vi må definere metoder i `ViewableTetrisModel` slik at `TetrisView` kan hente ut denne nødvendige informasjonen. Vi har i bakhodet av vi kun ønsker å ha tilgang til et minimum av nødvendig informasjon; begrens deg derfor til disse metodene i første omgang:
 - en metode *getDimension* uten parametre som returnerer et `GridDimension` -objekt, og
-- en metode *getTilesOnBoard* uten parametre som returnerer en `Iterable<GridCell<Character>>` som itererer over alle flisene på brettet. Mer presist, en metode som returnerer et objekt som, når det itereres over, gir alle posisjonene på brettet med tilhørende fliser.
+- en metode *getTilesOnBoard* uten parametre som returnerer en `Iterable<GridCell<Character>>` som itererer over alle flisene på brettet. Mer presist, en metode som returnerer et objekt som, når det itereres over, gir alle posisjonene på brettet med tilhørende symbol.
 
 ## Opprett en modell
 
@@ -41,22 +41,39 @@ Alle filene i dette avsnittet hører hjemme i pakken *no.uib.inf101.tetris.model
     * I konstruktøren til `TetrisBoard`, initialiser alle posisjonene i rutenettet med verdien `'-'`. Denne verdien representerer at Tetris-brettet er tomt i den gitte posisjonen.
 
 Opprett nå `TetrisModel`, og la klassen implementere ViewableTetrisModel.
-- La konstruktøren ha to parametre: antall rader og antall kolonner på brettet.
-- La TetrisModel ha en instansvariabel av typen TetrisBoard. Initialiser variabelen i konstruktøren.
+- La TetrisModel ha en instansvariabel av typen TetrisBoard.
+- La konstruktøren ha en parameter av typen TetrisBoard som benyttes for å initialisere instansvariabelen.
 - La TetrisModel implementere metodene fra ViewableTetrisModel. Du har tilgang til alt du trenger i instansvariabelen vi nettopp opprettet.
 
 > Hint: når du skal implementere metoden som returnerer noe med typen `GridDimension` som inneholder antall rader og kolonner -- har du tilfeldigvis et objekt med denne typen allerede som du enkelt kan returnere? :think:
 
 > Hint: når du skal implementere metoden som returnerer en `Iterable<CoordinateItem<Tile>>` som kan iterere over flisene på brettet -- har du tilfeldigvis et objekt med denne typen allerede som du enkelt kan returnere? :think:
 
+
+## Knyt det sammen
+
+I `TetrisMain`:
+* Endre main-metoden slik at det er et `TetrisView` -objekt som vises i stedet for `SampleView`.  
+  * Det er her vi må opprette et TetrisView -objekt.
+  * Fordi konstruktøren til TetrisView krever å få en modell som skal tegnes som argument ved opprettelsen, må vi opprette et `TetrisModel` -objekt først (opprettes også i main-metoden).
+  * Fordi TetrisModel krever å få et brett ved opprettelsen, må vi opprette et `TetrisBoard` objekt enda før det igjen.
+
+> Et profesjonelt Tetris-brett har 20 rader og 10 kolonner; i illustrasjonene her bruker vi 15 rader.
+
+:white_check_mark: Du skal nå kunne kjøre koden uten kompileringsfeil og vil se et tomt vindu.
+
 #### Testing underveis
 
-Det er lurt å skrive kode som kan testes enkelt underveis. I så henseende gjør vi noen enkle grep:
-- Fyll ut hjørnene på brettet med noen eksempel-verdier i konstruktøren til TetrisModel. Denne koden fjerner vi senere, når spillet er ferdig:
+Det er lurt og ofte tidsbesparende å skrive tester for koden man skriver underveis. I så henseende gjør vi noen enkle grep.
+
+For å støtte manuell testing:
+- I main-metoden, fyll ut hjørnene på brettet med noen eksempel-verdier (gjøres før opprettelsen av TetrisModel). Dette fjerner vi senere (når spillet er helt ferdig) men er nyttig å ha når vi tester ulike deler av spillet underveis:
     * øverst til venstre (rad 0, kolonne 0): `'g'`
     * øverst til høyre (rad 0, siste kolonne): `'y'`
     * nederst til venstre (siste rad, kolonne 0): `'r'`
     * nederst til høyre (siste rad, siste kolonne): `'b'`
+
+For å støtte automatiske tester:
 - Skriv en metode `prettyString` i TetrisBoard som returnerer en `String` -representasjon av brettet på en pen måte; hver rad adskilt med linjeskift, og bokstavene i hver rad limt sammen.  
 - I ***src/test*** -mappen, opprett mappen *java/no/uib/inf101/tetris/model*. Inne i denne mappen, opprett klassen `TestTetrisBoard` og legg til følgende test:
 
@@ -76,17 +93,6 @@ public void testPrettyString() {
   assertEquals(expected, board.prettyString());
 }
 ```
-
-
-## Knyt det sammen
-
-I `TetrisMain`:
-* Endre main-metoden det slik at det er et `TetrisView` -objekt som vises i stedet for `SampleView`. Det er her vi må opprette et TetrisView -objekt. Fordi konstruktøren til TetrisView krever å få en modell som skal tegnes som argument ved opprettelsen, må vi opprette et `TetrisModel` -objekt først (opprettes også i main-metoden).
-
-> Når du oppretter et TetrisModel -objekt: et profesjonelt Tetris-brett viser 20 rader og 10 kolonner; i illustrasjonene her bruker vi 15 rader.
-
-Du skal nå kunne kjøre koden uten kompileringsfeil og vil se et tomt vindu.
-
 
 
 ## Tegn brettet
