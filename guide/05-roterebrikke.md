@@ -19,7 +19,7 @@ Illustrasjonen viser rotasjon av et rutenett generelt.
 > ***Q:** Hvilken verdi skal ruten (r, c) i rotert fasong ha?*
 > **A:** Samme verdi som (oldRow, oldCol) i original fasong, der
 > oldRow = ... (sett inn matematisk uttrykk her)
-> oldCol = ... (sett inn matematisk uttrykk her)
+> oldCol = ... (sett inn matematisk uttrykk her).
 > For eksempel: hvis (r, c) er (2, 3) og bredden på original fasong er 4, da er (oldRow, oldCol) = (3, 1)
 
 Når testen din for rotasjonen passerer, er du klar til å fortsette:
@@ -31,7 +31,7 @@ Når testen din for rotasjonen passerer, er du klar til å fortsette:
 
 ---
 
-:white_check_mark:  Du er ferdig med dette kapittelet når du kan rotere brikken ved å trykke på pil-opp -tasten. Pass på at du ikke kan rotere brikken "ut av brettet," at brikken ikke kan rotere slik at den legger seg oppå en fargelagt rute, at alle brikkene (også I -brikken) roterer rundt ca sentrum av seg selv, at alle brikkene kommer tilbake til nøyaktig samme posisjon etter fire rotasjoner (to rotasjoner for S og Z), og at O -brikken ikke flytter på seg under rotasjon.
+:white_check_mark:  Du er ferdig med dette kapittelet når du kan rotere brikken ved å trykke på pil-opp -tasten. Pass på at du ikke kan rotere brikken "ut av brettet," at brikken ikke kan rotere slik at den legger seg oppå en fargelagt rute, at alle brikkene (også I -brikken) roterer rundt ca sentrum av seg selv, at alle brikkene kommer tilbake til nøyaktig samme posisjon etter fire rotasjoner, og at O -brikken ikke flytter på seg under rotasjon.
 
 
 **Frivillig**
