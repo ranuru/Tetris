@@ -11,6 +11,7 @@ Når du er ferdig med dette kapittelet, kan du rotere brikken ved å trykke på 
 - Begynn med å skrive testene for dette i *TestTetromino*: skriv for eksempel en test for `T` -brikken.
 
 ![Illustrasjon av rotasjon](./pics/rotation.png)
+
 Illustrasjonen viser rotasjon av et rutenett generelt.
 
 > Hint: opprett en ny `boolean[][]` i riktig størrelse og benytt en dobbel for-løkke over rad og kolonne i den nye fasongen. For hver posisjon (r, c) regn ut hvilken posisjon dette tilsvarer i den originale fasongen, og hent verdien derfra.
