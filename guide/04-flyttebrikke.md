@@ -75,7 +75,11 @@ For å gi beskjed til visningen at modellen har endret seg, gjør vi et kall til
 
 ### Testing
 
-* Skriv en metode i `TestTetrisModel` som tester *moveTetromino*-metoden.
+* Skriv en eller flere metoder i `TestTetrisModel` som tester *moveTetromino*-metoden. Det er mange potensielle ting å teste:
+    - Vellykket flytting returnerer true
+    - Vellykket flytting endrer hva man får om man iterererer gjennom den fallende brikkent
+    - Det er ikke mulig å flytte en brikke ut av brettet (returnerer false og ingen endring i fallende brikke sin posisjon)
+    - Det er ikke mulig å flytte brikken et sted som er opptatt på brettet (returnerer false og ingen endring i fallende brikke)
 
 ---
 
