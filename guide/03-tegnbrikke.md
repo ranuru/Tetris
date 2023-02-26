@@ -226,4 +226,6 @@ public void initialPositionOfO() {
 }
 ```
 
+* Skriv også den tilsvarende testen for `I` -brikken
+
 
