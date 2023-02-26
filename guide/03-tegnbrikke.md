@@ -156,12 +156,12 @@ Opprett en klasse `RandomTetrominoFactory` i samme pakke som *Tetromino* som imp
 ### TetrisModel
 
 I `TetrisModel`:
-- La det finnes en instansvariabel av typen *TetrominoFactor* og la konstruktøren ha en matchende parameter som benyttes for å initialisere den
+- La det finnes en instansvariabel av typen *TetrominoFactor* og utvid konstruktøren til å ha en matchende parameter som benyttes for å initialisere den
 - La det finnes en instansvariabel av typen *Tetromino* som representerer en fallende brikke. I konstruktøren, gjør et kall til *getNext* på teromino-fabrikken for å få en tetromino, og kall *shiftedToTopCenterOf*-metoden på denne brikken når du initialiserer instansvariabelen.
 - Implementer metoden som kreves av ViewableTetrisModel (se under)
 
 I `TetrisMain`:
-- Opprett et nytt *TetrominoFactory*-objekt i *TetrisMain* du  gir som argument når du oppretter *TetrisModel*-objektet.
+- Opprett et nytt *TetrominoFactory*-objekt i *TetrisMain* du gir som argument når du oppretter *TetrisModel*-objektet.
 
 
 ## Visningen
@@ -209,8 +209,9 @@ Opprett klassen `TestTetrisModel` i pakken *no.uib.inf101.tetris.model* og legg 
 ```java
 @Test
 public void initialPositionOfO() {
+  TetrisBoard board = new TetrisBoard(20, 10);
   TetrominoFactory factory = new PatternedTetrominoFactory("O");
-  ViewableTetrisModel model = new TetrisModel(20, 10, factory);
+  ViewableTetrisModel model = new TetrisModel(board, factory);
 
   List<GridCell<Character>> tetroCells = new ArrayList<>();
   for (GridCell<Character> gc : model.fallingTetromino()) {
