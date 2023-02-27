@@ -63,8 +63,17 @@ public class Grid<E> implements IGrid<E> {
 
     @Override
     public Iterator<GridCell<E>> iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+        ArrayList<GridCell<E>> list = new ArrayList<GridCell<E>>();
+        for (int i = 0; i < this.row; i++) {
+            for (int j = 0; j < this.col; j++) {
+
+                CellPosition pos = new CellPosition(i, j);
+                E value = this.grid.get(i).get(j);
+                GridCell<E> gc = new GridCell<E>(pos, value);
+                list.add(gc);
+            }
+        }
+        return list.iterator();
     }
 
     @Override
