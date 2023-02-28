@@ -7,45 +7,42 @@ import java.lang.IndexOutOfBoundsException;
 
 public class Grid<E> implements IGrid<E> {
 
-    // feltvariabler
     private int row;
     private int col;
-    private E defaultValue;
+    protected E defaultValue;
     private List<List<E>> grid;
     private List<E> cell;
 
-    // konstruktør som blir brukt hvis det skrives inn en "defaultValue" som fylles
-    // inn i griden
     public Grid(int row, int col, E defaultValue) {
         this.row = row;
         this.col = col;
         this.defaultValue = defaultValue;
 
-        // oppretter en grid og fyller den med "defaultValue" hvis det finnes en
-        // defaultValue
-        this.grid = new ArrayList<List<E>>();
-        for (int i = 0; i < row; i++) {
-            this.cell = new ArrayList<E>();
-            grid.add(cell);
-            for (int j = 0; j < col; j++) {
-                cell.add(defaultValue);
-            }
-        }
+        fillGrid(row, col, defaultValue);
     }
 
-    // konstruktør som blir brukt hvis det ikke skrives inn en "defaultValue",
-    // fyller griden med null
     public Grid(int row, int col) {
         this.row = row;
         this.col = col;
+        this.defaultValue = null;
 
-        // oppretter en grid og fyller den med "null"
+        fillGrid(row, col, defaultValue);
+    }
+
+    /**
+     * Fills the grid with the specificed defaultValue
+     * 
+     * @param row
+     * @param col
+     * @param defaultValue
+     */
+    public void fillGrid(int row, int col, E defaultValue) {
         this.grid = new ArrayList<List<E>>();
-        for (int i = 0; i < row; i++) {
+        for (int i = 0; i < this.row; i++) {
             this.cell = new ArrayList<E>();
-            grid.add(cell);
-            for (int j = 0; j < col; j++) {
-                cell.add(null);
+            this.grid.add(this.cell);
+            for (int j = 0; j < this.col; j++) {
+                this.cell.add(this.defaultValue);
             }
         }
 
