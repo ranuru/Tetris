@@ -8,7 +8,6 @@ public class TetrisModel implements ViewableTetrisModel{
 
     private TetrisBoard board;
 
-
     public TetrisModel(TetrisBoard board) {
         this.board = board;
     }

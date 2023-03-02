@@ -5,7 +5,6 @@ import javax.swing.JFrame;
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.tetris.model.TetrisBoard;
 import no.uib.inf101.tetris.model.TetrisModel;
-import no.uib.inf101.tetris.view.SampleView;
 import no.uib.inf101.tetris.view.TetrisView;
 
 

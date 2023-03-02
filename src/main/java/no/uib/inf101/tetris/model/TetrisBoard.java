@@ -20,13 +20,22 @@ public class TetrisBoard extends Grid<Character> {
         super.fillGrid(row, col, defaultValue);
     }
 
+    /**
+     * 
+     * @return a string representation of the grid
+     */
     public String prettyString() {
+        String stringBoard = "";
         for (int i = 0; i<this.row; i++) {
-            for (int j = 0; j<this.row; j++) {
+            if (stringBoard != "") {
+            stringBoard += "\n"; }
+            for (int j = 0; j<this.col; j++) {
                 CellPosition pos = new CellPosition(i, j);
-                board.get(pos);
+                Character value = get(pos); 
+                stringBoard += value;
             }
         }
+        return stringBoard;
     }
 }
     

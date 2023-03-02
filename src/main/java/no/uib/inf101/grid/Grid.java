@@ -85,7 +85,6 @@ public class Grid<E> implements IGrid<E> {
     public E get(CellPosition pos) throws IndexOutOfBoundsException {
         int row = pos.row();
         int col = pos.col();
-        System.out.println(grid);
         return this.grid.get(row).get(col);
 
     }
