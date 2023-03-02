@@ -17,7 +17,7 @@ public class TetrisView extends JPanel {
     private ViewableTetrisModel model;
     private ColorTheme colorTheme;
     private static final double OUTERMARGIN = 30;
-    private static final double INNERMARGIN = 5;
+    private static final double INNERMARGIN = 2;
     private static final double SQUARESIZE = 30; 
     private double width;
     private double height;
