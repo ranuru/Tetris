@@ -7,9 +7,9 @@ public class TetrominoShapes {
     static boolean[][] shapeL() {
         shape = new boolean[][] {
                 { false, false, false, false },
-                { false, false, false, false },
                 { true, true, true, false },
-                { true, false, false, false }
+                { true, false, false, false },
+                { false, false, false, false }
         };
         return shape;
     }
@@ -17,9 +17,9 @@ public class TetrominoShapes {
     static boolean[][] shapeJ() {
         shape = new boolean[][] {
                 { false, false, false, false },
-                { false, false, false, false },
                 { true, true, true, false },
-                { false, false, true, false }
+                { false, false, true, false },
+                { false, false, false, false }
         };
         return shape;
     }
@@ -37,9 +37,9 @@ public class TetrominoShapes {
     static boolean[][] shapeS() {
         shape = new boolean[][] {
                 { false, false, false, false },
-                { false, false, false, false },
                 { false, true, true, false },
-                { true, true, false, false }
+                { true, true, false, false },
+                { false, false, false, false }
         };
         return shape;
     }
@@ -57,9 +57,9 @@ public class TetrominoShapes {
     static boolean[][] shapeZ() {
         shape = new boolean[][] {
                 { false, false, false, false },
-                { false, false, false, false },
                 { true, true, false, false },
-                { false, true, true, false }
+                { false, true, true, false },
+                { false, false, false, false }
         };
         return shape;
     }
@@ -67,9 +67,9 @@ public class TetrominoShapes {
     static boolean[][] shapeT() {
         shape = new boolean[][] {
                 { false, false, false, false },
-                { false, false, false, false },
                 { true, true, true, false },
-                { false, true, false, false }
+                { false, true, false, false },
+                { false, false, false, false }
         };
         return shape;
     }

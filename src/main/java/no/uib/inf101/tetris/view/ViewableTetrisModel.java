@@ -13,8 +13,16 @@ public interface ViewableTetrisModel {
     GridDimension getDimension();
 
     /**
+     * Gets the tiles on the board
      * 
      * @return an Iterable containing GridCell-objects containing Character-objects
      */
     Iterable<GridCell<Character>> getTilesOnBoard();
+
+    /**
+     * Gets the tiles on the falling tetromino
+     * 
+     * @return an Iterable containing GridCell-objects containing Character-objects
+     */
+    Iterable<GridCell<Character>> getTilesOnFallingTetromino();
 }

@@ -1,5 +1,17 @@
 package no.uib.inf101.tetris.model.tetromino;
 
-public class RandomTetrominoFactory {
+import java.util.Random;
+import java.lang.Character;
+
+public class RandomTetrominoFactory implements TetrominoFactory {
+
+    @Override
+    public Tetromino getNext() {
+        String s = "LJOSIZ";
+        Random random = new Random();
+        int index = random.nextInt(s.length());
+        Character character = s.charAt(index);
+        return Tetromino.newTetromino(character);
+    }
     
 }

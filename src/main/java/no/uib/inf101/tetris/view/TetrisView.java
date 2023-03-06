@@ -20,8 +20,7 @@ public class TetrisView extends JPanel {
     private static final double INNERMARGIN = 2;
     private static final double SQUARESIZE = 30; 
     private double width;
-    private double height;
-    // TODO: fix the width and height of the window           
+    private double height;          
     
     // Constructor
     public TetrisView(ViewableTetrisModel model) {
@@ -66,9 +65,11 @@ public class TetrisView extends JPanel {
         g.fill(new Rectangle2D.Double(x, y , width, height));
         Rectangle2D r = new Rectangle2D.Double(x, y, width, height);
         GridDimension gd = model.getDimension();
+        Iterable<GridCell<Character>> fallingTetromino = model.getTilesOnFallingTetromino();
         Iterable<GridCell<Character>> cells = model.getTilesOnBoard();
         CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd, INNERMARGIN);
         drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
+        drawCells(g, fallingTetromino, cellPositionToPixelConverter, colorTheme);
 
 
 
