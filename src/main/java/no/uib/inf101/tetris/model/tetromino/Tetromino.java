@@ -59,8 +59,7 @@ public class Tetromino implements Iterable<GridCell<Character>> {
      * @param gd
      * @return a new tetromino
      */
-
-     //TODO: Fix tetromino not centering on board
+    
     public Tetromino shiftedToTopCenterOf(GridDimension gd) {
         CellPosition pos = new CellPosition(-1, (gd.cols() / 2) - 2);
         return new Tetromino(symbol, shape, pos);
