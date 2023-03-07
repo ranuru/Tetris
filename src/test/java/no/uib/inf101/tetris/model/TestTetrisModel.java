@@ -1,6 +1,8 @@
 package no.uib.inf101.tetris.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -9,6 +11,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import no.uib.inf101.grid.CellPosition;
+import no.uib.inf101.grid.Grid;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.tetris.model.tetromino.PatternedTetrominoFactory;
 import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
@@ -141,4 +144,76 @@ public class TestTetrisModel {
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 5), 'T')));
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(1, 4), 'T')));
     }
+
+    @Test
+    public void testMoveTetrominoReturnsTrueOrFalse() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("T");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+
+        // checks if moveTetromino returns true if move is legal
+        assertTrue(((TetrisModel) model).moveTetromino(10, 0));
+        // checks if movetetromino returns false if move is illegal
+        assertFalse(((TetrisModel) model).moveTetromino(15, 14));
+    }
+
+    @Test
+    public void testMoveTetrominoIterator() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("T");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+
+        List<GridCell<Character>> tetroCells = new ArrayList<>();
+        for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
+            tetroCells.add(gc);
+        }
+        assertEquals(4, tetroCells.size());
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 4), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(1, 4), 'T')));
+
+        ViewableTetrisModel model2 = new TetrisModel(board, factory);
+        // moves the second tetronimo 10 rows down
+        ((TetrisModel) model2).moveTetromino(10, 0);
+
+        List<GridCell<Character>> tetroCells2 = new ArrayList<>();
+        for (GridCell<Character> gc : model2.getTilesOnFallingTetromino()) {
+            tetroCells2.add(gc);
+        }
+        assertEquals(4, tetroCells2.size());
+        assertTrue(tetroCells2.contains(new GridCell<>(new CellPosition(10, 5), 'T')));
+        assertTrue(tetroCells2.contains(new GridCell<>(new CellPosition(10, 4), 'T')));
+        assertTrue(tetroCells2.contains(new GridCell<>(new CellPosition(10, 5), 'T')));
+        assertTrue(tetroCells2.contains(new GridCell<>(new CellPosition(11, 4), 'T')));
+
+        assertNotEquals(tetroCells, tetroCells2);
+    }
+
+    @Test
+    public void testMoveTetrominoToOccupiedPos() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("T");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+        ViewableTetrisModel model2 = new TetrisModel(board, factory);
+        board.set((new CellPosition(10, 4)), 'g');
+        board.set((new CellPosition(10, 5)), 'y');
+        board.set((new CellPosition(11, 4)), 'r');
+        board.set((new CellPosition(11, 5)), 'b');
+        assertFalse(((TetrisModel) model).moveTetromino(10, 0));
+        
+        List<GridCell<Character>> tetroCells = new ArrayList<>();
+        for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
+            tetroCells.add(gc);
+        }
+        ((TetrisModel) model).moveTetromino(20,0);
+
+        List<GridCell<Character>> tetroCells2 = new ArrayList<>();
+        for (GridCell<Character> gc : model2.getTilesOnFallingTetromino()) {
+            tetroCells2.add(gc);
+        }
+        assertEquals(tetroCells, tetroCells2);
+
+    }
+
 }

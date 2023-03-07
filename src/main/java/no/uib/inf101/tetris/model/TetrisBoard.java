@@ -1,8 +1,5 @@
 package no.uib.inf101.tetris.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.Grid;
 import no.uib.inf101.grid.GridCell;
