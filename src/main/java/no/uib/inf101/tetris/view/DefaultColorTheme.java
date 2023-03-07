@@ -11,6 +11,7 @@ public class DefaultColorTheme implements ColorTheme {
                     "Argument cannot be null");
         }
         Color color = switch (cell) {
+            // colors for the grid cells
             case 'r' -> Color.RED;
             case 'b' -> Color.BLUE;
             case 'y' -> Color.YELLOW;
@@ -20,6 +21,7 @@ public class DefaultColorTheme implements ColorTheme {
             case 'c' -> Color.CYAN;
             case 'o' -> Color.ORANGE;
 
+            // colors for the tetrominos
             case 'L' -> Color.RED;
             case 'J' -> Color.BLUE;
             case 'S' -> Color.YELLOW;
@@ -47,5 +49,4 @@ public class DefaultColorTheme implements ColorTheme {
         Color color = Color.BLACK;
         return color;
     }
-
 }

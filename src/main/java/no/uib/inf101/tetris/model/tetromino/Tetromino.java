@@ -46,7 +46,7 @@ public class Tetromino implements Iterable<GridCell<Character>> {
      * @param deltaCol
      * @return a new tetromino
      */
-    Tetromino shiftedBy(int deltaRow, int deltaCol) {
+    public Tetromino shiftedBy(int deltaRow, int deltaCol) {
         
         CellPosition pos = new CellPosition(deltaRow + this.pos.row(),deltaCol + this.pos.col());
         return new Tetromino(symbol, shape, pos);

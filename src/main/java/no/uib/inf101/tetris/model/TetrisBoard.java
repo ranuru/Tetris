@@ -5,12 +5,15 @@ import java.util.List;
 
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.Grid;
+import no.uib.inf101.grid.GridCell;
+import no.uib.inf101.tetris.model.tetromino.Tetromino;
+import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
 public class TetrisBoard extends Grid<Character> {
 
     private int row;
     private int col;
-    private List<List<Character>> board;
+    ViewableTetrisModel model;
 
     public TetrisBoard(int row, int col) {
         super(row, col);
@@ -36,6 +39,19 @@ public class TetrisBoard extends Grid<Character> {
             }
         }
         return stringBoard;
+    }
+
+    public boolean canPlace(Tetromino newTetromino) {
+        for (GridCell<Character> gridCell : newTetromino) {
+            CellPosition pos = gridCell.pos();
+            if (pos.row() < 0 || pos.row() >= this.row || pos.col() < 0 || pos.col() >= this.col) {
+                return false;
+            }
+            if (get(pos) != '-') {
+                return false;
+            }
+        }
+        return true;
     }
 }
     

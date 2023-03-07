@@ -1,9 +1,8 @@
-package no.uib.inf101.tetris;
+package no.uib.inf101.tetris.model;
 
 import org.junit.jupiter.api.Test;
 
 import no.uib.inf101.grid.CellPosition;
-import no.uib.inf101.tetris.model.TetrisBoard;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTetrisBoard {
