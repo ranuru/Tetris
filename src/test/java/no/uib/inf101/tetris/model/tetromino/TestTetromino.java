@@ -191,4 +191,15 @@ public class TestTetromino {
         tetro2 = tetro.shiftedToTopCenterOf(grid2);
         assertEquals(tetro, tetro2);
     }
+
+    @Test
+    public void testRotateTetromino() {
+        Tetromino tetro = Tetromino.newTetromino('S');
+        Tetromino tetro2 = Tetromino.newTetromino('S');
+        tetro = tetro.rotate();
+        tetro = tetro.rotate();
+        tetro2 = tetro2.rotate();
+        tetro2 = tetro2.rotate();
+        assertEquals(tetro, tetro2);
+    }
 }

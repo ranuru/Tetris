@@ -7,11 +7,11 @@ import no.uib.inf101.tetris.model.tetromino.Tetromino;
 import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
 import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
-public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel{
+public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel {
 
     TetrominoFactory tetrominofactory;
     Tetromino tetromino;
-
+    GameState gameState;
 
     private TetrisBoard board;
 
@@ -20,6 +20,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         this.tetrominofactory = tetrominofactory;
         this.tetromino = tetrominofactory.getNext();
         this.tetromino = this.tetromino.shiftedToTopCenterOf(board);
+        this.gameState = GameState.ACTIVE_GAME;
     }
 
     @Override
@@ -31,7 +32,6 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     public Iterable<GridCell<Character>> getTilesOnBoard() {
         return this.board;
 
-        
     }
 
     @Override
@@ -48,5 +48,44 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         }
         return false;
     }
-    
+
+    @Override
+    public Tetromino rotateTetromino() {
+        Tetromino newTetromino = this.tetromino.rotate();
+        if (this.board.canPlace(newTetromino)) {
+            this.tetromino = newTetromino;
+        }
+        return this.tetromino;
+    }
+
+    @Override
+    public void dropTetromino() {
+        while (this.moveTetromino(1, 0) == true) {
+            this.moveTetromino(1, 0);
+        }
+        this.addTetrominoToBoard();
+        getNewFallingTetromino();
+    }
+
+    public void getNewFallingTetromino() {
+        Tetromino newTetromino = tetrominofactory.getNext();
+        newTetromino = newTetromino.shiftedToTopCenterOf(board);
+        if (this.board.canPlace(newTetromino)) {
+            this.tetromino = newTetromino;
+        } else {
+            this.gameState = GameState.GAME_OVER;
+        }
+    }
+
+    public void addTetrominoToBoard() {
+        for (GridCell<Character> gridCell : this.tetromino) {
+            this.board.set(gridCell.pos(), gridCell.value());
+        }
+        this.tetromino = tetrominofactory.getNext();
+    }
+
+    @Override
+    public GameState getGameState() {
+        return this.gameState;
+    }
 }

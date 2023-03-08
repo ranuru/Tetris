@@ -111,4 +111,14 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         return true;
     }
 
+    public Tetromino rotate() {
+        boolean[][] newShape = new boolean[shape.length][shape.length];
+        for (int i = 0; i < shape.length; i++) {
+            for (int j = 0; j < shape.length; j++) {
+                newShape[i][j] = shape[shape.length - j - 1][i];
+            }
+        }
+        return new Tetromino(symbol, newShape, pos);
+    }
+
 }

@@ -49,4 +49,10 @@ public class DefaultColorTheme implements ColorTheme {
         Color color = Color.BLACK;
         return color;
     }
+
+    @Override
+    public Color getGameOverColor() {
+        Color color = new Color(0, 0, 0, 128);
+        return color;
+    }
 }

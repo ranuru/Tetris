@@ -11,7 +11,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import no.uib.inf101.grid.CellPosition;
-import no.uib.inf101.grid.Grid;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.tetris.model.tetromino.PatternedTetrominoFactory;
 import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
@@ -67,10 +66,10 @@ public class TestTetrisModel {
         }
 
         assertEquals(4, tetroCells.size());
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 3), 'S')));
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 4), 'S')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(0, 5), 'S')));
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(1, 4), 'S')));
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(1, 5), 'S')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(1, 3), 'S')));
     }
 
     @Test
@@ -201,19 +200,52 @@ public class TestTetrisModel {
         board.set((new CellPosition(11, 4)), 'r');
         board.set((new CellPosition(11, 5)), 'b');
         assertFalse(((TetrisModel) model).moveTetromino(10, 0));
-        
+
         List<GridCell<Character>> tetroCells = new ArrayList<>();
         for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
             tetroCells.add(gc);
         }
-        ((TetrisModel) model).moveTetromino(20,0);
+        ((TetrisModel) model).moveTetromino(20, 0);
 
         List<GridCell<Character>> tetroCells2 = new ArrayList<>();
         for (GridCell<Character> gc : model2.getTilesOnFallingTetromino()) {
             tetroCells2.add(gc);
         }
         assertEquals(tetroCells, tetroCells2);
-
     }
 
+    @Test
+    public void testRotateTetromino() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("T");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+        ((TetrisModel) model).moveTetromino(10, 0);
+        ((TetrisModel) model).rotateTetromino();
+        List<GridCell<Character>> tetroCells = new ArrayList<>();
+        for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
+            tetroCells.add(gc);
+        }
+        assertEquals(4, tetroCells.size());
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(9, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(10, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(10, 4), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(11, 5), 'T')));
+    }
+
+    @Test
+    public void testDropTetromino() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("O");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+        ((TetrisModel) model).dropTetromino();
+        List<GridCell<Character>> boardCells = new ArrayList<>();
+        for (GridCell<Character> gc : model.getTilesOnBoard()) {
+            boardCells.add(gc);
+        }
+        assertEquals(200, boardCells.size());
+        assertTrue(boardCells.contains(new GridCell<>(new CellPosition(19, 5), 'O')));
+        assertTrue(boardCells.contains(new GridCell<>(new CellPosition(19, 4), 'O')));
+        assertTrue(boardCells.contains(new GridCell<>(new CellPosition(18, 5), 'O')));
+        assertTrue(boardCells.contains(new GridCell<>(new CellPosition(18, 4), 'O')));
+    }
 }

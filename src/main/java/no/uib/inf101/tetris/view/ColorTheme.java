@@ -25,4 +25,11 @@ public interface ColorTheme {
      * @return a Color object
      */
     Color getBackgroundColor();
+
+    /**
+     * Gets the color of the game over screen.
+     * 
+     * @return a Color object
+     */
+    Color getGameOverColor();
 }

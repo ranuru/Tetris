@@ -7,7 +7,7 @@ public class RandomTetrominoFactory implements TetrominoFactory {
 
     @Override
     public Tetromino getNext() {
-        String s = "LJOSIZ";
+        String s = "IJLOSTZ";
         Random random = new Random();
         int index = random.nextInt(s.length());
         Character character = s.charAt(index);

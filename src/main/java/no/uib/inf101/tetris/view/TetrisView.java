@@ -5,12 +5,14 @@ import javax.swing.JPanel;
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.grid.GridDimension;
+import no.uib.inf101.tetris.model.GameState;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 
 public class TetrisView extends JPanel {
 
@@ -70,6 +72,15 @@ public class TetrisView extends JPanel {
         CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd, INNERMARGIN);
         drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
         drawCells(g, fallingTetromino, cellPositionToPixelConverter, colorTheme);
+        if (model.getGameState() == GameState.GAME_OVER) {
+            g.setColor(colorTheme.getGameOverColor());
+            g.fill(new Rectangle2D.Double(x, y , width, height));
+            drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
+            g.setColor(Color.RED);
+            g.setFont(new Font("Arial", Font.BOLD, 50));
+            g.drawRect((int)x, (int)y, (int)width, (int)height);
+            Inf101Graphics.drawCenteredString(g, "GAME OVER", (int)x, (int)y, (int)width, (int)height);
+        }
 
 
 
