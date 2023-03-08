@@ -9,7 +9,6 @@ public class TetrisController implements java.awt.event.KeyListener {
 
     ControllableTetrisModel model;
     TetrisView view;
-    GameState gameState;
 
     public TetrisController(ControllableTetrisModel model, TetrisView view) {
         this.model = model;
@@ -24,7 +23,7 @@ public class TetrisController implements java.awt.event.KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!(this.gameState == GameState.GAME_OVER)) {
+        if (!(this.model.getGameState() == GameState.GAME_OVER)) {
 
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 this.model.moveTetromino(0, -1);
@@ -39,6 +38,9 @@ public class TetrisController implements java.awt.event.KeyListener {
             }
             this.view.repaint();
         } 
+        else {
+            return;
+        }
         
     }
 
