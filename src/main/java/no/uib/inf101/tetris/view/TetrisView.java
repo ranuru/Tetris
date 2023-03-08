@@ -76,8 +76,8 @@ public class TetrisView extends JPanel {
             g.setColor(colorTheme.getGameOverColor());
             g.fill(new Rectangle2D.Double(x, y , width, height));
             drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
-            g.setColor(Color.RED);
-            g.setFont(new Font("Arial", Font.BOLD, 50));
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial", Font.BOLD, 40));
             g.drawRect((int)x, (int)y, (int)width, (int)height);
             Inf101Graphics.drawCenteredString(g, "GAME OVER", (int)x, (int)y, (int)width, (int)height);
         }
