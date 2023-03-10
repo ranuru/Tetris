@@ -38,6 +38,11 @@ public class TetrisBoard extends Grid<Character> {
         return stringBoard;
     }
 
+    /**
+     * 
+     * @param newTetromino
+     * @return true if the tetromino can be placed on the board
+     */
     public boolean canPlace(Tetromino newTetromino) {
         for (GridCell<Character> gridCell : newTetromino) {
             CellPosition pos = gridCell.pos();
@@ -49,6 +54,45 @@ public class TetrisBoard extends Grid<Character> {
             }
         }
         return true;
+    }
+
+    public boolean checkIfRowIsFull(int row) {
+        for (int i = 0; i<this.col; i++) {
+            CellPosition pos = new CellPosition(row, i);
+            if (get(pos) == '-') {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void setRow(int row, Character character) {
+        for (int i = 0; i<this.col; i++) {
+            CellPosition pos = new CellPosition(row, i);
+            set(pos, character);
+        }
+    }
+
+    public void copyRow(int row, int row2) {
+        for (int i = 0; i<this.col; i++) {
+            CellPosition pos = new CellPosition(row, i);
+            CellPosition pos2 = new CellPosition(row2, i);
+            set(pos2, get(pos));
+        }
+    }
+
+    public int removeFullRows() {
+        int rowsRemoved = 0;
+        for (int i = 0; i<this.row; i++) {
+            if (checkIfRowIsFull(i)) {
+                rowsRemoved++;
+                for (int j = i; j>0; j--) {
+                    copyRow(j-1, j);
+                }
+                setRow(0, '-');
+            }
+        }
+        return rowsRemoved;
     }
 }
     

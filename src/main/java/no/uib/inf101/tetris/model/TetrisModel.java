@@ -12,6 +12,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     TetrominoFactory tetrominofactory;
     Tetromino tetromino;
     GameState gameState;
+    int points = 0;
 
     private TetrisBoard board;
 
@@ -64,6 +65,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             this.moveTetromino(1, 0);
         }
         this.addTetrominoToBoard();
+        points += this.board.removeFullRows();
         getNewFallingTetromino();
     }
 
