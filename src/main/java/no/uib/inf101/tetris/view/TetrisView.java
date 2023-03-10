@@ -6,6 +6,7 @@ import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.grid.GridDimension;
 import no.uib.inf101.tetris.model.GameState;
+import no.uib.inf101.tetris.model.TetrisModel;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -72,14 +73,16 @@ public class TetrisView extends JPanel {
         CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd, INNERMARGIN);
         drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
         drawCells(g, fallingTetromino, cellPositionToPixelConverter, colorTheme);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Arial", Font.BOLD, 20));
+        Inf101Graphics.drawCenteredString(g, "SCORE: " + ((TetrisModel) this.model).getPoints(),x, 0,(int)width, (int)height/10);
         if (model.getGameState() == GameState.GAME_OVER) {
             g.setColor(colorTheme.getGameOverColor());
             g.fill(new Rectangle2D.Double(x, y , width, height));
             drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
             g.setColor(Color.WHITE);
             g.setFont(new Font("Arial", Font.BOLD, 40));
-            g.drawRect((int)x, (int)y, (int)width, (int)height);
-            Inf101Graphics.drawCenteredString(g, "GAME OVER", (int)x, (int)y, (int)width, (int)height);
+            Inf101Graphics.drawCenteredString(g, "GAME OVER",x, y, (int)width, (int)height);
         }
 
 
