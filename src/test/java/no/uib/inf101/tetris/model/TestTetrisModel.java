@@ -248,4 +248,24 @@ public class TestTetrisModel {
         assertTrue(boardCells.contains(new GridCell<>(new CellPosition(18, 5), 'O')));
         assertTrue(boardCells.contains(new GridCell<>(new CellPosition(18, 4), 'O')));
     }
+
+    @Test
+    public void testClockTick() {
+        TetrisBoard board = new TetrisBoard(20, 10);
+        TetrominoFactory factory = new PatternedTetrominoFactory("O");
+        ViewableTetrisModel model = new TetrisModel(board, factory);
+        ((TetrisModel) model).clockTick();
+        ((TetrisModel) model).clockTick();
+        ((TetrisModel) model).clockTick();
+        List<GridCell<Character>> tetroCells = new ArrayList<>();
+        for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
+            tetroCells.add(gc);
+        }
+        assertEquals(4, tetroCells.size());
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(3, 5), 'O')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(3, 4), 'O')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 5), 'O')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 4), 'O')));
+        
+    }
 }
