@@ -32,4 +32,18 @@ public interface ControllableTetrisModel {
      */
     GameState getGameState();
 
+    /**
+     * Get the milliseconds between each timer tick.
+     * 
+     * @return the milliseconds between each timer tick
+     */
+    int getTimerInterval();
+
+    /**
+     * Event that is called when the timer ticks.
+     * 
+     *           
+     */
+    void clockTick();
+
 }

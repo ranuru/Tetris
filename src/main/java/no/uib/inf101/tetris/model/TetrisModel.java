@@ -94,4 +94,19 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     public int getPoints() {
         return this.points;
     }
+
+    @Override
+    public int getTimerInterval() {
+        return 1000;
+    }
+
+    @Override
+    public void clockTick() {
+        if (this.gameState == GameState.ACTIVE_GAME) {
+            if (this.moveTetromino(1, 0) == false) {
+                this.addTetrominoToBoard();
+                getNewFallingTetromino();
+            }
+        }
+    }
 }
