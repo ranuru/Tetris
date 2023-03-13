@@ -46,10 +46,10 @@ public class TetrisBoard extends Grid<Character> {
     public boolean canPlace(Tetromino newTetromino) {
         for (GridCell<Character> gridCell : newTetromino) {
             CellPosition pos = gridCell.pos();
-            if (pos.row() < 0 || pos.row() >= this.row || pos.col() < 0 || pos.col() >= this.col) {
+            if (!positionIsOnGrid(pos)) {
                 return false;
             }
-            if (get(pos) != '-') {
+            else if (get(pos) != '-') {
                 return false;
             }
         }

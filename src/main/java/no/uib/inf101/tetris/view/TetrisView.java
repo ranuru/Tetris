@@ -14,24 +14,28 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.BasicStroke;
 
+/**
+ * A view of a Tetris game. This class is responsible for drawing the game.
+ *
+ */
 public class TetrisView extends JPanel {
 
     private ViewableTetrisModel model;
     private ColorTheme colorTheme;
     private static final double OUTERMARGIN = 30;
     private static final double INNERMARGIN = 2;
-    private static final double SQUARESIZE = 30; 
+    private static final double SQUARESIZE = 30;
     private double width;
-    private double height;          
-    
-    // Constructor
+    private double height;
+
     public TetrisView(ViewableTetrisModel model) {
         this.model = model;
         this.setFocusable(true);
-        this.width = (SQUARESIZE + INNERMARGIN) * model.getDimension().cols() + INNERMARGIN + OUTERMARGIN;                        
-        this.height = (SQUARESIZE + INNERMARGIN) * model.getDimension().rows() + INNERMARGIN + OUTERMARGIN;        
-        this.setPreferredSize(new Dimension((int)width, (int)height));
+        this.width = (SQUARESIZE + INNERMARGIN) * model.getDimension().cols() + INNERMARGIN + OUTERMARGIN;
+        this.height = (SQUARESIZE + INNERMARGIN) * model.getDimension().rows() + INNERMARGIN + OUTERMARGIN;
+        this.setPreferredSize(new Dimension((int) width, (int) height));
         this.colorTheme = new DefaultColorTheme();
         this.setBackground(getBackground());
     }
@@ -39,14 +43,21 @@ public class TetrisView extends JPanel {
     // The paintComponent method is called by the Java Swing framework every time
     // either the window opens or resizes, or we call .repaint() on this object.
     // Note: NEVER call paintComponent directly yourself
-  @Override
-  public void paintComponent(Graphics g) {
-    super.paintComponent(g);
-    Graphics2D g2 = (Graphics2D) g;
-    drawGame(g2);
-  }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D) g;
+        drawGame(g2);
+    }
 
-    public static void drawCells(Graphics2D canvas, Iterable<GridCell<Character>> cells,
+    /** 
+     * Draws the cells in the given Iterable
+     * @param g2 the Graphics2D object to draw on
+     * @param cells the Iterable containing the cells to draw
+     * @param cellPositionToPixelConverter the CellPositionToPixelConverter object to use
+     * @param theme the ColorTheme object to use
+     */
+    public static void drawCells(Graphics2D g2, Iterable<GridCell<Character>> cells,
             CellPositionToPixelConverter cellPositionToPixelConverter, ColorTheme theme) {
         for (GridCell<Character> cell : cells) {
             Character value = cell.value();
@@ -54,39 +65,43 @@ public class TetrisView extends JPanel {
             Rectangle2D r = cellPositionToPixelConverter.getBoundsForCell(pos);
             Color color = theme.getCellColor(value);
 
-            canvas.setColor(color);
-            canvas.fill(r);
+            g2.setColor(color);
+            g2.fill(r);
         }
     }
 
-    public void drawGame(Graphics2D g) {
+    /** 
+     * Draws the game
+     * @param g2 the Graphics2D object to draw on
+     */
+    public void drawGame(Graphics2D g2) {
         double x = OUTERMARGIN;
         double y = OUTERMARGIN;
         double width = this.getWidth() - (2 * OUTERMARGIN);
         double height = this.getHeight() - (2 * OUTERMARGIN);
-        g.setColor(colorTheme.getFrameColor());
-        g.fill(new Rectangle2D.Double(x, y , width, height));
+        g2.setColor(colorTheme.getFrameColor());
+        g2.fill(new Rectangle2D.Double(x, y, width, height));
         Rectangle2D r = new Rectangle2D.Double(x, y, width, height);
         GridDimension gd = model.getDimension();
         Iterable<GridCell<Character>> fallingTetromino = model.getTilesOnFallingTetromino();
         Iterable<GridCell<Character>> cells = model.getTilesOnBoard();
-        CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd, INNERMARGIN);
-        drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
-        drawCells(g, fallingTetromino, cellPositionToPixelConverter, colorTheme);
-        g.setColor(Color.BLACK);
-        g.setFont(new Font("Arial", Font.BOLD, 20));
-        Inf101Graphics.drawCenteredString(g, "SCORE: " + ((TetrisModel) this.model).getPoints(),x, 0,(int)width, (int)height/10);
+        CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd,
+                INNERMARGIN);
+        drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
+        drawCells(g2, fallingTetromino, cellPositionToPixelConverter, colorTheme);
+        g2.setColor(colorTheme.getScoreColor());
+        g2.setFont(new Font("Arial", Font.BOLD, 20));
+        Inf101Graphics.drawCenteredString(g2, "SCORE: " + ((TetrisModel) this.model).getPoints(), x, 0, (int) width,
+                (int) (height * 2.2));
         if (model.getGameState() == GameState.GAME_OVER) {
-            g.setColor(colorTheme.getGameOverColor());
-            g.fill(new Rectangle2D.Double(x, y , width, height));
-            drawCells(g, cells, cellPositionToPixelConverter, colorTheme);
-            g.setColor(Color.WHITE);
-            g.setFont(new Font("Arial", Font.BOLD, 40));
-            Inf101Graphics.drawCenteredString(g, "GAME OVER",x, y, (int)width, (int)height);
+            g2.setColor(colorTheme.getGameOverColor());
+            g2.fill(new Rectangle2D.Double(x, y, width, height));
+            drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
+            g2.setColor(((DefaultColorTheme) colorTheme).getGameOverStrokeColor());
+            g2.setStroke(new BasicStroke(20));
+            g2.setColor(colorTheme.getGameOverTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 40));
+            Inf101Graphics.drawCenteredString(g2, "GAME OVER", x, y, (int) width, (int) height);
         }
-
-
-
     }
 }
-

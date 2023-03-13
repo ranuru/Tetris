@@ -2,6 +2,9 @@ package no.uib.inf101.tetris.view;
 
 import java.awt.Color;
 
+/**
+ * A default color theme for the game.
+ */
 public class DefaultColorTheme implements ColorTheme {
 
     @Override
@@ -53,6 +56,23 @@ public class DefaultColorTheme implements ColorTheme {
     @Override
     public Color getGameOverColor() {
         Color color = new Color(0, 0, 0, 128);
+        return color;
+    }
+
+    @Override
+    public Color getGameOverTextColor() {
+        Color color = Color.WHITE;
+        return color;
+    }
+
+    public Color getGameOverStrokeColor() {
+        Color color = Color.BLACK;
+        return color;
+    }
+
+    @Override
+    public Color getScoreColor() {
+        Color color = Color.BLACK;
         return color;
     }
 }

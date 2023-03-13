@@ -3,6 +3,10 @@ package no.uib.inf101.tetris.model.tetromino;
 import java.util.Random;
 import java.lang.Character;
 
+/** Class that creates random tetrominos
+ *  
+ * 
+ */
 public class RandomTetrominoFactory implements TetrominoFactory {
 
     @Override

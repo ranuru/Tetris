@@ -1,5 +1,9 @@
 package no.uib.inf101.tetris.model.tetromino;
 
+/** Class that creates tetrominos in a pattern
+ *  
+ */
+
 public class PatternedTetrominoFactory implements TetrominoFactory {
 
     String s;

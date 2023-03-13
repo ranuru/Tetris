@@ -1,7 +1,6 @@
 package no.uib.inf101.tetris.controller;
 
 import no.uib.inf101.tetris.model.GameState;
-import no.uib.inf101.tetris.model.tetromino.Tetromino;
 
 public interface ControllableTetrisModel {
     
@@ -16,9 +15,9 @@ public interface ControllableTetrisModel {
     /**
      * Rotate the falling tetromino clockwise.
      * 
-     * @return the new rotated tetromino
+     * @return true if the rotation was successful, false otherwise
      */
-    Tetromino rotateTetromino();
+    boolean rotateTetromino();
 
     /**
      * Drops the falling tetromino to the bottom of the board.

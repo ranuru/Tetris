@@ -51,12 +51,13 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     }
 
     @Override
-    public Tetromino rotateTetromino() {
+    public boolean rotateTetromino() {
         Tetromino newTetromino = this.tetromino.rotate();
         if (this.board.canPlace(newTetromino)) {
             this.tetromino = newTetromino;
+            return true;
         }
-        return this.tetromino;
+        return false;
     }
 
     @Override
@@ -69,6 +70,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         getNewFallingTetromino();
     }
 
+    //* */
     public void getNewFallingTetromino() {
         Tetromino newTetromino = tetrominofactory.getNext();
         newTetromino = newTetromino.shiftedToTopCenterOf(board);

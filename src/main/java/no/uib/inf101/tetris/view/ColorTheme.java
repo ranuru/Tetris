@@ -32,4 +32,18 @@ public interface ColorTheme {
      * @return a Color object
      */
     Color getGameOverColor();
+
+    /**
+     * Gets the color of the text on the game over screen.
+     * 
+     * @return a Color object
+     */
+    Color getGameOverTextColor();
+
+    /**
+     * Gets the color of the score text.
+     * 
+     * @return a Color object
+     */
+    Color getScoreColor();
 }
