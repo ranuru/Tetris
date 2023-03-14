@@ -9,6 +9,10 @@ import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.grid.GridDimension;
 
+/**
+ * Class that represents a tetromino
+ *
+ */
 public class Tetromino implements Iterable<GridCell<Character>> {
 
     private char symbol;
@@ -111,6 +115,10 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         return true;
     }
 
+    /**
+     * Returns a new tetromino that is a copy of this one, but rotated 90 degrees
+     * @return a new tetromino
+     */
     public Tetromino rotate() {
         boolean[][] newShape = new boolean[shape.length][shape.length];
         for (int i = 0; i < shape.length; i++) {

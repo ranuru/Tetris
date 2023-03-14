@@ -7,5 +7,5 @@ public interface TetrominoFactory {
      * 
      * @return the next tetromino
      */
-    public Tetromino getNext();
+    Tetromino getNext();
 }

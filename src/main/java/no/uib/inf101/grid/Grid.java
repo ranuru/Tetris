@@ -5,6 +5,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.lang.IndexOutOfBoundsException;
 
+/**
+ * A grid of elements of type E.
+ * 
+ * @param <E> The type of elements in the grid
+ */
 public class Grid<E> implements IGrid<E> {
 
     private int row;
@@ -32,9 +37,9 @@ public class Grid<E> implements IGrid<E> {
     /**
      * Fills the grid with the specificed defaultValue
      * 
-     * @param row
-     * @param col
-     * @param defaultValue
+     * @param row the number of rows in the grid
+     * @param col the number of cols in the grid
+     * @param defaultValue the value to fill the grid with
      */
     public void fillGrid(int row, int col, E defaultValue) {
         this.grid = new ArrayList<List<E>>();

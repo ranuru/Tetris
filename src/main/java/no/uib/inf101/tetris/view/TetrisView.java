@@ -40,9 +40,6 @@ public class TetrisView extends JPanel {
         this.setBackground(getBackground());
     }
 
-    // The paintComponent method is called by the Java Swing framework every time
-    // either the window opens or resizes, or we call .repaint() on this object.
-    // Note: NEVER call paintComponent directly yourself
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -50,12 +47,14 @@ public class TetrisView extends JPanel {
         drawGame(g2);
     }
 
-    /** 
+    /**
      * Draws the cells in the given Iterable
-     * @param g2 the Graphics2D object to draw on
-     * @param cells the Iterable containing the cells to draw
-     * @param cellPositionToPixelConverter the CellPositionToPixelConverter object to use
-     * @param theme the ColorTheme object to use
+     * 
+     * @param g2                           the Graphics2D object to draw on
+     * @param cells                        the Iterable containing the cells to draw
+     * @param cellPositionToPixelConverter the CellPositionToPixelConverter object
+     *                                     to use
+     * @param theme                        the ColorTheme object to use
      */
     public static void drawCells(Graphics2D g2, Iterable<GridCell<Character>> cells,
             CellPositionToPixelConverter cellPositionToPixelConverter, ColorTheme theme) {
@@ -70,8 +69,9 @@ public class TetrisView extends JPanel {
         }
     }
 
-    /** 
+    /**
      * Draws the game
+     * 
      * @param g2 the Graphics2D object to draw on
      */
     public void drawGame(Graphics2D g2) {

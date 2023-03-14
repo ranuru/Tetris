@@ -1,5 +1,8 @@
 package no.uib.inf101.tetris.model.tetromino;
 
+/** Class containing the different Tetromino shapes
+ * 
+ */
 public class TetrominoShapes {
 
     static boolean[][] shape;

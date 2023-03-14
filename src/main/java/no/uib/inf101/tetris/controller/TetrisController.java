@@ -8,6 +8,10 @@ import no.uib.inf101.tetris.midi.TetrisSong;
 import no.uib.inf101.tetris.model.GameState;
 import no.uib.inf101.tetris.view.TetrisView;
 
+/**
+ * The controller for the tetris game 
+ *
+ */
 public class TetrisController implements java.awt.event.KeyListener {
 
     ControllableTetrisModel model;
@@ -60,14 +64,20 @@ public class TetrisController implements java.awt.event.KeyListener {
     public void keyReleased(KeyEvent e) {
     }
 
+    /**
+     * Event that is called when the timer ticks.
+     */
     public void clockTick(ActionEvent ae) {
         this.model.clockTick();
-        getTimerDelay();
+        setTimerDelay();
         this.view.repaint();
     }
 
 
-    public void getTimerDelay() {
+    /**
+     * Sets the timer delay to the value in the model
+     */
+    public void setTimerDelay() {
         this.timer.setInitialDelay(this.model.getTimerInterval());
         this.timer.setDelay(this.model.getTimerInterval());
     }

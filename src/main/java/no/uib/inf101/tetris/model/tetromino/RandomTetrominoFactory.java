@@ -5,7 +5,6 @@ import java.lang.Character;
 
 /** Class that creates random tetrominos
  *  
- * 
  */
 public class RandomTetrominoFactory implements TetrominoFactory {
 

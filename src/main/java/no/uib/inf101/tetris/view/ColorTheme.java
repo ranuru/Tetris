@@ -7,7 +7,7 @@ public interface ColorTheme {
     /**
      * Gets the color of the cell, return value cannot be null
      * 
-     * @param c
+     * @param cell the cell to get the color for
      * @return a Color object for the cell
      */
     Color getCellColor(char cell);

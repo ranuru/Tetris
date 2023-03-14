@@ -6,6 +6,10 @@ import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.tetris.model.tetromino.Tetromino;
 import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
+/**
+ * Class for the tetris board
+ * 
+ */
 public class TetrisBoard extends Grid<Character> {
 
     private int row;
@@ -21,7 +25,7 @@ public class TetrisBoard extends Grid<Character> {
     }
 
     /**
-     * 
+     * Gets the grid in string format
      * @return a string representation of the grid
      */
     public String prettyString() {
@@ -56,6 +60,11 @@ public class TetrisBoard extends Grid<Character> {
         return true;
     }
 
+    /**
+     * Checks if the given row is full
+     * @param row
+     * @return true if the row is full
+     */
     public boolean checkIfRowIsFull(int row) {
         for (int i = 0; i<this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
@@ -66,6 +75,11 @@ public class TetrisBoard extends Grid<Character> {
         return true;
     }
 
+    /**
+     * Sets the given row to the given character
+     * @param row
+     * @param character
+     */
     public void setRow(int row, Character character) {
         for (int i = 0; i<this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
@@ -73,6 +87,11 @@ public class TetrisBoard extends Grid<Character> {
         }
     }
 
+    /**
+     * Copies the given row to the given row
+     * @param row
+     * @param row2
+     */
     public void copyRow(int row, int row2) {
         for (int i = 0; i<this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
@@ -81,6 +100,10 @@ public class TetrisBoard extends Grid<Character> {
         }
     }
 
+    /**
+     * Removes all full rows and returns the number of rows removed
+     * @return the number of rows removed
+     */
     public int removeFullRows() {
         int rowsRemoved = 0;
         for (int i = 0; i<this.row; i++) {
