@@ -5,5 +5,5 @@ package no.uib.inf101.tetris.model;
  * 
  */
 public enum GameState {
-    ACTIVE_GAME, GAME_OVER
+    ACTIVE_GAME, GAME_OVER, PAUSED, NEW_GAME
 }
