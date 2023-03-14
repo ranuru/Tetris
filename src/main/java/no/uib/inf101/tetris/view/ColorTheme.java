@@ -3,7 +3,7 @@ package no.uib.inf101.tetris.view;
 import java.awt.Color;
 
 public interface ColorTheme {
-    
+
     /**
      * Gets the color of the cell, return value cannot be null
      * 

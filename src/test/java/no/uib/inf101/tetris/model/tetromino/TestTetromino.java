@@ -82,7 +82,7 @@ public class TestTetromino {
         for (GridCell<Character> gc : tetro) {
             objs.add(gc);
         }
-        
+
         // Check that we got the expected GridCell objects
         assertEquals(4, objs.size());
         assertTrue(objs.contains(new GridCell<>(new CellPosition(11, 100), 'L')));
@@ -185,11 +185,14 @@ public class TestTetromino {
     public void testShiftedToTopCenterOf() {
         Tetromino tetro = Tetromino.newTetromino('S');
         Tetromino tetro2 = Tetromino.newTetromino('O');
+
         Grid<Character> grid = new Grid<Character>(10, 101);
-        Grid<Character> grid2 = new Grid<Character>(10,100);
+        Grid<Character> grid2 = new Grid<Character>(10, 100);
         tetro = tetro.shiftedToTopCenterOf(grid);
-        tetro2 = tetro.shiftedToTopCenterOf(grid2);
-        assertEquals(tetro, tetro2);
+        tetro2 = tetro2.shiftedToTopCenterOf(grid2);
+
+        assertEquals(tetro.getPos(), new CellPosition(-1, grid.cols() / 2 - 2));
+        assertEquals(tetro2.getPos(), new CellPosition(-1, grid2.cols() / 2 - 2));
     }
 
     @Test

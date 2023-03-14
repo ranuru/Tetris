@@ -51,19 +51,19 @@ public class Tetromino implements Iterable<GridCell<Character>> {
      * @return a new tetromino
      */
     public Tetromino shiftedBy(int deltaRow, int deltaCol) {
-        
-        CellPosition pos = new CellPosition(deltaRow + this.pos.row(),deltaCol + this.pos.col());
+
+        CellPosition pos = new CellPosition(deltaRow + this.pos.row(), deltaCol + this.pos.col());
         return new Tetromino(symbol, shape, pos);
     }
 
     /**
      * Returns a new tetromino that is a copy of this one, but shifted to the top
-     * center of the given grid
+     * center of the given GridDimension
      * 
      * @param gd
      * @return a new tetromino
      */
-    
+
     public Tetromino shiftedToTopCenterOf(GridDimension gd) {
         CellPosition pos = new CellPosition(-1, (gd.cols() / 2) - 2);
         return new Tetromino(symbol, shape, pos);
@@ -80,7 +80,6 @@ public class Tetromino implements Iterable<GridCell<Character>> {
                 }
             }
         }
-        System.out.println(list);
         return list.iterator();
     }
 
@@ -117,6 +116,7 @@ public class Tetromino implements Iterable<GridCell<Character>> {
 
     /**
      * Returns a new tetromino that is a copy of this one, but rotated 90 degrees
+     * 
      * @return a new tetromino
      */
     public Tetromino rotate() {
@@ -129,4 +129,15 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         return new Tetromino(symbol, newShape, pos);
     }
 
+    public char getSymbol() {
+        return this.symbol;
+    }
+
+    public boolean[][] getShape() {
+        return this.shape;
+    }
+
+    public CellPosition getPos() {
+        return this.pos;
+    }
 }

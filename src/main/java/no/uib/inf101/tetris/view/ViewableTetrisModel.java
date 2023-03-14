@@ -33,4 +33,11 @@ public interface ViewableTetrisModel {
      * @return the current game state
      */
     GameState getGameState();
+
+    /**
+     * Gets the current points
+     * 
+     * @return the current points
+     */
+    int getPoints();
 }

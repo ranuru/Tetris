@@ -14,7 +14,6 @@ import java.awt.geom.Rectangle2D;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.BasicStroke;
 
 /**
  * A view of a Tetris game. This class is responsible for drawing the game.
@@ -75,33 +74,54 @@ public class TetrisView extends JPanel {
      * @param g2 the Graphics2D object to draw on
      */
     public void drawGame(Graphics2D g2) {
+
+        // variables
         double x = OUTERMARGIN;
         double y = OUTERMARGIN;
         double width = this.getWidth() - (2 * OUTERMARGIN);
         double height = this.getHeight() - (2 * OUTERMARGIN);
+
+        Rectangle2D tileRectangle = new Rectangle2D.Double(x, y, width, height);
         g2.setColor(colorTheme.getFrameColor());
-        g2.fill(new Rectangle2D.Double(x, y, width, height));
-        Rectangle2D r = new Rectangle2D.Double(x, y, width, height);
+        g2.fill(tileRectangle);
+
         GridDimension gd = model.getDimension();
+
         Iterable<GridCell<Character>> fallingTetromino = model.getTilesOnFallingTetromino();
         Iterable<GridCell<Character>> cells = model.getTilesOnBoard();
-        CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(r, gd,
+        CellPositionToPixelConverter cellPositionToPixelConverter = new CellPositionToPixelConverter(tileRectangle, gd,
                 INNERMARGIN);
-        drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
-        drawCells(g2, fallingTetromino, cellPositionToPixelConverter, colorTheme);
-        g2.setColor(colorTheme.getScoreColor());
-        g2.setFont(new Font("Arial", Font.BOLD, 20));
-        Inf101Graphics.drawCenteredString(g2, "SCORE: " + ((TetrisModel) this.model).getPoints(), x, 0, (int) width,
-                (int) (height * 2.2));
-        if (model.getGameState() == GameState.GAME_OVER) {
-            g2.setColor(colorTheme.getGameOverColor());
-            g2.fill(new Rectangle2D.Double(x, y, width, height));
+
+        if (model.getGameState() == GameState.ACTIVE_GAME) {
+
+            // draws the background and falling tetromino
             drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
-            g2.setColor(((DefaultColorTheme) colorTheme).getGameOverStrokeColor());
-            g2.setStroke(new BasicStroke(20));
+            drawCells(g2, fallingTetromino, cellPositionToPixelConverter, colorTheme);
+
+            // draws the score
+            g2.setColor(colorTheme.getScoreColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            Inf101Graphics.drawCenteredString(g2, "SCORE: " + ((TetrisModel) this.model).getPoints(), x, y, (int) width,
+                    (int) (height * 2));
+        }
+
+        if (model.getGameState() == GameState.GAME_OVER) {
+
+            // draws a transparent background over the game
+            g2.setColor(colorTheme.getGameOverColor());
+            g2.fill(tileRectangle);
+            drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
+
+            // draws the game over text
             g2.setColor(colorTheme.getGameOverTextColor());
             g2.setFont(new Font("Arial", Font.BOLD, 40));
-            Inf101Graphics.drawCenteredString(g2, "GAME OVER", x, y, (int) width, (int) height);
+            Inf101Graphics.drawCenteredString(g2, "GAME OVER", x, y, width, height);
+
+            // draws the score
+            g2.setColor(colorTheme.getGameOverTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            Inf101Graphics.drawCenteredString(
+                    g2, "SCORE " + (this.model).getPoints(), x, y * 2, width, height);
         }
     }
 }

@@ -3,8 +3,9 @@ package no.uib.inf101.tetris.model.tetromino;
 import java.util.Random;
 import java.lang.Character;
 
-/** Class that creates random tetrominos
- *  
+/**
+ * Class that creates random tetrominos
+ * 
  */
 public class RandomTetrominoFactory implements TetrominoFactory {
 
@@ -16,5 +17,5 @@ public class RandomTetrominoFactory implements TetrominoFactory {
         Character character = s.charAt(index);
         return Tetromino.newTetromino(character);
     }
-    
+
 }

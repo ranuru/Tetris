@@ -20,15 +20,14 @@ public class CellPositionToPixelConverter {
     this.gd = gd;
     this.margin = margin;
   }
-  
+
   public Rectangle2D getBoundsForCell(CellPosition cp) {
     double cellWidth = (box.getWidth() - (gd.cols() + 1) * margin) / gd.cols();
     double cellHeight = (box.getHeight() - (gd.rows() + 1) * margin) / gd.rows();
     double cellX = box.getX() + (cp.col() * cellWidth) + ((cp.col() + 1) * margin);
-    double cellY = box.getY() + (cp.row() * cellHeight) + ((cp.row() + 1) * margin); 
-    
+    double cellY = box.getY() + (cp.row() * cellHeight) + ((cp.row() + 1) * margin);
+
     return new Rectangle2D.Double(cellX, cellY, cellWidth, cellHeight);
 
   }
 }
-

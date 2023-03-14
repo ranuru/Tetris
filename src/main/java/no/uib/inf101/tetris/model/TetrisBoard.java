@@ -26,16 +26,18 @@ public class TetrisBoard extends Grid<Character> {
 
     /**
      * Gets the grid in string format
+     * 
      * @return a string representation of the grid
      */
     public String prettyString() {
         String stringBoard = "";
-        for (int i = 0; i<this.row; i++) {
+        for (int i = 0; i < this.row; i++) {
             if (stringBoard != "") {
-            stringBoard += "\n"; }
-            for (int j = 0; j<this.col; j++) {
+                stringBoard += "\n";
+            }
+            for (int j = 0; j < this.col; j++) {
                 CellPosition pos = new CellPosition(i, j);
-                Character value = get(pos); 
+                Character value = get(pos);
                 stringBoard += value;
             }
         }
@@ -52,8 +54,7 @@ public class TetrisBoard extends Grid<Character> {
             CellPosition pos = gridCell.pos();
             if (!positionIsOnGrid(pos)) {
                 return false;
-            }
-            else if (get(pos) != '-') {
+            } else if (get(pos) != '-') {
                 return false;
             }
         }
@@ -62,11 +63,12 @@ public class TetrisBoard extends Grid<Character> {
 
     /**
      * Checks if the given row is full
+     * 
      * @param row
      * @return true if the row is full
      */
     public boolean checkIfRowIsFull(int row) {
-        for (int i = 0; i<this.col; i++) {
+        for (int i = 0; i < this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
             if (get(pos) == '-') {
                 return false;
@@ -77,11 +79,12 @@ public class TetrisBoard extends Grid<Character> {
 
     /**
      * Sets the given row to the given character
+     * 
      * @param row
      * @param character
      */
     public void setRow(int row, Character character) {
-        for (int i = 0; i<this.col; i++) {
+        for (int i = 0; i < this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
             set(pos, character);
         }
@@ -89,11 +92,12 @@ public class TetrisBoard extends Grid<Character> {
 
     /**
      * Copies the given row to the given row
+     * 
      * @param row
      * @param row2
      */
     public void copyRow(int row, int row2) {
-        for (int i = 0; i<this.col; i++) {
+        for (int i = 0; i < this.col; i++) {
             CellPosition pos = new CellPosition(row, i);
             CellPosition pos2 = new CellPosition(row2, i);
             set(pos2, get(pos));
@@ -102,15 +106,16 @@ public class TetrisBoard extends Grid<Character> {
 
     /**
      * Removes all full rows and returns the number of rows removed
+     * 
      * @return the number of rows removed
      */
     public int removeFullRows() {
         int rowsRemoved = 0;
-        for (int i = 0; i<this.row; i++) {
+        for (int i = 0; i < this.row; i++) {
             if (checkIfRowIsFull(i)) {
                 rowsRemoved++;
-                for (int j = i; j>0; j--) {
-                    copyRow(j-1, j);
+                for (int j = i; j > 0; j--) {
+                    copyRow(j - 1, j);
                 }
                 setRow(0, '-');
             }
@@ -118,6 +123,3 @@ public class TetrisBoard extends Grid<Character> {
         return rowsRemoved;
     }
 }
-    
-    
-

@@ -9,10 +9,10 @@ import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
 public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel {
 
-    TetrominoFactory tetrominofactory;
-    Tetromino tetromino;
-    GameState gameState;
-    int points = 0;
+    private TetrominoFactory tetrominofactory;
+    private Tetromino tetromino;
+    private GameState gameState;
+    private int points = 0;
 
     private TetrisBoard board;
 
@@ -70,7 +70,6 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         getNewFallingTetromino();
     }
 
-    //* */
     public void getNewFallingTetromino() {
         Tetromino newTetromino = tetrominofactory.getNext();
         newTetromino = newTetromino.shiftedToTopCenterOf(board);
@@ -93,6 +92,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         return this.gameState;
     }
 
+    @Override
     public int getPoints() {
         return this.points;
     }

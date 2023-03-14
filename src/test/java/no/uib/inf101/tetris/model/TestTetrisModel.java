@@ -266,6 +266,6 @@ public class TestTetrisModel {
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(3, 4), 'O')));
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 5), 'O')));
         assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 4), 'O')));
-        
+
     }
 }
