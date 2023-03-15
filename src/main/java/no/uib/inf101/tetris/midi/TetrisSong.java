@@ -74,6 +74,11 @@ public class TetrisSong implements Runnable {
         this.sequencer = null;
     }
 
+    /**
+     * Check if the music is playing.
+     * 
+     * @return true if the music is playing, false otherwise
+     */
     public boolean isRunning() {
         if (this.sequencer != null && this.sequencer.isRunning()) {
             return true;
@@ -82,6 +87,9 @@ public class TetrisSong implements Runnable {
         }
     }
 
+    /**
+     * Pause the music.
+     */
     public void pause() {
         this.doPauseMidiSounds();
     }
