@@ -9,7 +9,7 @@ import no.uib.inf101.tetris.model.GameState;
 import no.uib.inf101.tetris.view.TetrisView;
 
 /**
- * The controller for the tetris game 
+ * The controller for the tetris game
  *
  */
 public class TetrisController implements java.awt.event.KeyListener {
@@ -27,8 +27,9 @@ public class TetrisController implements java.awt.event.KeyListener {
         this.timer = new Timer(model.getTimerInterval(), this::clockTick);
         this.song = new TetrisSong();
         timer.start();
+
         this.song.run();
-    }   
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -52,12 +53,22 @@ public class TetrisController implements java.awt.event.KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 this.model.dropTetromino();
                 timer.restart();
+            } else if (e.getKeyCode() == KeyEvent.VK_P) {
+                GameState state = this.model.getGameState();
+                if (state == GameState.ACTIVE_GAME) {
+                    this.model.pauseGame();
+                } else if (state == GameState.PAUSED) {
+                    this.model.playGame();
+                }
+            } else if (e.getKeyCode() == KeyEvent.VK_M) {
+                if (this.song.isRunning()) {
+                    this.song.pause();
+                } else {
+                    this.song.doUnpauseMidiSounds();
+                }
             }
-            this.view.repaint();
-        } else {
-            return;
         }
-
+        this.view.repaint();
     }
 
     @Override
@@ -72,7 +83,6 @@ public class TetrisController implements java.awt.event.KeyListener {
         setTimerDelay();
         this.view.repaint();
     }
-
 
     /**
      * Sets the timer delay to the value in the model

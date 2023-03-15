@@ -75,7 +75,7 @@ public class TetrisView extends JPanel {
      */
     public void drawGame(Graphics2D g2) {
 
-        // variables
+        // variables for the board
         double x = OUTERMARGIN;
         double y = OUTERMARGIN;
         double width = this.getWidth() - (2 * OUTERMARGIN);
@@ -98,11 +98,34 @@ public class TetrisView extends JPanel {
             drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
             drawCells(g2, fallingTetromino, cellPositionToPixelConverter, colorTheme);
 
-            // draws the score
+            // draws the score during the game
             g2.setColor(colorTheme.getScoreColor());
             g2.setFont(new Font("Arial", Font.BOLD, 20));
-            Inf101Graphics.drawCenteredString(g2, "SCORE: " + ((TetrisModel) this.model).getPoints(), x, y, (int) width,
-                    (int) (height * 2));
+            Inf101Graphics.drawCenteredString(g2, "SCORE: " + ((TetrisModel) this.model).getPoints(),
+                    tileRectangle.getX(),
+                    tileRectangle.getY(), width, height * 2.05);
+
+        }
+
+        if (model.getGameState() == GameState.PAUSED) {
+
+            // draws a transparent background over the game and the falling tetromino
+            g2.setColor(colorTheme.getPausedColor());
+            g2.fill(tileRectangle);
+            drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
+            drawCells(g2, fallingTetromino, cellPositionToPixelConverter, colorTheme);
+
+            // draws the paused text
+            g2.setColor(colorTheme.getPausedTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 40));
+            Inf101Graphics.drawCenteredString(g2, "PAUSED", tileRectangle);
+
+            // draws the paused score
+            g2.setColor(colorTheme.getPausedTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            Inf101Graphics.drawCenteredString(
+                    g2, "SCORE " + (this.model).getPoints(), tileRectangle.getX(), tileRectangle.getY(), width,
+                    height * 1.2);
         }
 
         if (model.getGameState() == GameState.GAME_OVER) {
@@ -115,13 +138,14 @@ public class TetrisView extends JPanel {
             // draws the game over text
             g2.setColor(colorTheme.getGameOverTextColor());
             g2.setFont(new Font("Arial", Font.BOLD, 40));
-            Inf101Graphics.drawCenteredString(g2, "GAME OVER", x, y, width, height);
+            Inf101Graphics.drawCenteredString(g2, "GAME OVER", tileRectangle);
 
-            // draws the score
+            // draws the game over score
             g2.setColor(colorTheme.getGameOverTextColor());
             g2.setFont(new Font("Arial", Font.BOLD, 20));
             Inf101Graphics.drawCenteredString(
-                    g2, "SCORE " + (this.model).getPoints(), x, y * 2, width, height);
+                    g2, "SCORE " + (this.model).getPoints(), tileRectangle.getX(), tileRectangle.getY(), width,
+                    height * 1.2);
         }
     }
 }

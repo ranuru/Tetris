@@ -43,7 +43,7 @@ public class DefaultColorTheme implements ColorTheme {
 
     @Override
     public Color getFrameColor() {
-        Color color = Color.GRAY;
+        Color color = Color.WHITE;
         return color;
     }
 
@@ -55,7 +55,7 @@ public class DefaultColorTheme implements ColorTheme {
 
     @Override
     public Color getGameOverColor() {
-        Color color = new Color(0, 0, 0, 128);
+        Color color = new Color(0, 0, 0, 200);
         return color;
     }
 
@@ -65,14 +65,21 @@ public class DefaultColorTheme implements ColorTheme {
         return color;
     }
 
-    public Color getGameOverStrokeColor() {
+    @Override
+    public Color getScoreColor() {
         Color color = Color.BLACK;
         return color;
     }
 
     @Override
-    public Color getScoreColor() {
-        Color color = Color.BLACK;
+    public Color getPausedTextColor() {
+        Color color = Color.WHITE;
+        return color;
+    }
+
+    @Override
+    public Color getPausedColor() {
+        Color color = new Color(0, 0, 0, 200);
         return color;
     }
 }

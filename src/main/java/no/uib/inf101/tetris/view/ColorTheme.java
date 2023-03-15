@@ -46,4 +46,18 @@ public interface ColorTheme {
      * @return a Color object
      */
     Color getScoreColor();
+
+    /**
+     * Gets the color of the paused text.
+     * 
+     * @return a Color object
+     */
+    Color getPausedTextColor();
+
+    /**
+     * Gets the color of the paused screen.
+     * 
+     * @return a Color object
+     */
+    Color getPausedColor();
 }

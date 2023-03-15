@@ -3,7 +3,6 @@ package no.uib.inf101.tetris.controller;
 import no.uib.inf101.tetris.model.GameState;
 
 public interface ControllableTetrisModel {
-    
 
     /**
      * Move the falling tetromino one step.
@@ -41,8 +40,18 @@ public interface ControllableTetrisModel {
     /**
      * Event that is called when the timer ticks.
      * 
-     *           
+     * 
      */
     void clockTick();
+
+    /**
+     * Pause the game.
+     */
+    void pauseGame();
+
+    /**
+     * Resume the game.
+     */
+    void playGame();
 
 }

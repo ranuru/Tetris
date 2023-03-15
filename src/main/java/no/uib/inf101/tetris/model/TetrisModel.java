@@ -111,4 +111,17 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             }
         }
     }
+
+    @Override
+    public void pauseGame() {
+        GameState state = this.getGameState();
+        if (state == GameState.ACTIVE_GAME) {
+            this.gameState = GameState.PAUSED;
+        }
+    }
+
+    @Override
+    public void playGame() {
+        this.gameState = GameState.ACTIVE_GAME;
+    }
 }
