@@ -57,15 +57,18 @@ public class TetrisController implements java.awt.event.KeyListener {
                 GameState state = this.model.getGameState();
                 if (state == GameState.ACTIVE_GAME) {
                     this.model.pauseGame();
+                    this.song.pause();
                 } else if (state == GameState.PAUSED) {
                     this.model.playGame();
-                }
-            } else if (e.getKeyCode() == KeyEvent.VK_M) {
-                if (this.song.isRunning()) {
-                    this.song.pause();
-                } else {
                     this.song.doUnpauseMidiSounds();
                 }
+            }
+        }
+        if (e.getKeyCode() == KeyEvent.VK_M) {
+            if (this.song.isRunning()) {
+                this.song.pause();
+            } else {
+                this.song.doUnpauseMidiSounds();
             }
         }
         this.view.repaint();
