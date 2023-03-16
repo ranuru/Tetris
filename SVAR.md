@@ -9,7 +9,7 @@ Det jeg har lært om Java og objekt-orientert programmering under arbeidet med d
 
 ## Hva er det neste du ønsker å lære om Java og programmering?
 
-Det neste jeg har lyst å lære om Java og programmering er bare generelt sett mer avanserte ting, å kunne lage mer avanserte programmer. Jeg har også lyst til å lære å lage programmer som kan sendes og 'publiseres'. 
+Det neste jeg har lyst å lære om Java og programmering er bare generelt sett mer avanserte ting, å kunne lage mer avanserte programmer. Jeg har også lyst til å lære å lage programmer som kan sendes og 'publiseres'. Jeg har også lyst til å lære å skrive så effektiv kode som mulig.
 
 ## Hvilke grep gjør vi for å øke modulariteten i koden? Gi noen eksempeler.
 
