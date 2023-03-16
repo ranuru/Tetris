@@ -146,6 +146,34 @@ public class TetrisView extends JPanel {
             Inf101Graphics.drawCenteredString(
                     g2, "SCORE " + (this.model).getPoints(), tileRectangle.getX(), tileRectangle.getY(), width,
                     height * 1.2);
+
+            // draws the play again text
+            g2.setColor(colorTheme.getGameOverTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            Inf101Graphics.drawCenteredString(
+                    g2, "PRESS ENTER TO PLAY AGAIN", tileRectangle.getX(), tileRectangle.getY(), width,
+                    height * 1.4);
+        }
+
+        if (model.getGameState() == GameState.NEW_GAME) {
+
+            // draws a transparent background over the game
+            g2.setColor(colorTheme.getNewGameColor());
+            g2.fill(tileRectangle);
+            drawCells(g2, cells, cellPositionToPixelConverter, colorTheme);
+
+            // draws the new game text
+            g2.setColor(colorTheme.getNewGameTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 40));
+            Inf101Graphics.drawCenteredString(g2, "NEW GAME", tileRectangle);
+
+            // draws the play game text
+            g2.setColor(colorTheme.getNewGameTextColor());
+            g2.setFont(new Font("Arial", Font.BOLD, 20));
+            Inf101Graphics.drawCenteredString(
+                    g2, "PRESS ENTER TO PLAY", tileRectangle.getX(), tileRectangle.getY(), width,
+                    height * 1.2);
+
         }
     }
 }

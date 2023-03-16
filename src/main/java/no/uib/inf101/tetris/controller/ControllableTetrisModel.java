@@ -54,4 +54,9 @@ public interface ControllableTetrisModel {
      */
     void playGame();
 
+    /**
+     * Start a new game.
+     */
+    void newGame();
+
 }

@@ -82,4 +82,16 @@ public class DefaultColorTheme implements ColorTheme {
         Color color = new Color(0, 0, 0, 200);
         return color;
     }
+
+    @Override
+    public Color getNewGameTextColor() {
+        Color color = Color.WHITE;
+        return color;
+    }
+
+    @Override
+    public Color getNewGameColor() {
+        Color color = new Color(0, 0, 0, 200);
+        return color;
+    }
 }

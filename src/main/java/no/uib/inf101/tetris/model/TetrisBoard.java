@@ -122,4 +122,8 @@ public class TetrisBoard extends Grid<Character> {
         }
         return rowsRemoved;
     }
+
+    public void clear() {
+        super.fillGrid(row, col, defaultValue);
+    }
 }

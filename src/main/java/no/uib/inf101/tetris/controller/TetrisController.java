@@ -27,7 +27,6 @@ public class TetrisController implements java.awt.event.KeyListener {
         this.timer = new Timer(model.getTimerInterval(), this::clockTick);
         this.song = new TetrisSong();
         timer.start();
-
         this.song.run();
     }
 
@@ -37,8 +36,7 @@ public class TetrisController implements java.awt.event.KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!(this.model.getGameState() == GameState.GAME_OVER)) {
-
+        if ((this.model.getGameState() != GameState.GAME_OVER) && (this.model.getGameState() != GameState.NEW_GAME)) {
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 this.model.moveTetromino(0, -1);
             } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -54,16 +52,29 @@ public class TetrisController implements java.awt.event.KeyListener {
                 this.model.dropTetromino();
                 timer.restart();
             } else if (e.getKeyCode() == KeyEvent.VK_P) {
-                GameState state = this.model.getGameState();
-                if (state == GameState.ACTIVE_GAME) {
+                if (this.model.getGameState() == GameState.ACTIVE_GAME) {
                     this.model.pauseGame();
                     this.song.pause();
-                } else if (state == GameState.PAUSED) {
+                } else if (this.model.getGameState() == GameState.PAUSED) {
                     this.model.playGame();
                     this.song.doUnpauseMidiSounds();
                 }
             }
         }
+
+        if (this.model.getGameState() == GameState.NEW_GAME) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                this.model.playGame();
+            }
+        }
+
+        if (this.model.getGameState() == GameState.GAME_OVER) {
+            if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                this.model.newGame();
+
+            }
+        }
+
         if (e.getKeyCode() == KeyEvent.VK_M) {
             if (this.song.isRunning()) {
                 this.song.pause();

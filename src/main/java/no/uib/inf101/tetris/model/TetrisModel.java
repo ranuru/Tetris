@@ -21,7 +21,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         this.tetrominofactory = tetrominofactory;
         this.tetromino = tetrominofactory.getNext();
         this.tetromino = this.tetromino.shiftedToTopCenterOf(board);
-        this.gameState = GameState.ACTIVE_GAME;
+        this.gameState = GameState.NEW_GAME;
     }
 
     @Override
@@ -122,6 +122,13 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
 
     @Override
     public void playGame() {
-        this.gameState = GameState.ACTIVE_GAME;
+        gameState = GameState.ACTIVE_GAME;
+    }
+
+    @Override
+    public void newGame() {
+        this.board.clear();
+        this.points = 0;
+        this.gameState = GameState.NEW_GAME;
     }
 }

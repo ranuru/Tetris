@@ -60,4 +60,18 @@ public interface ColorTheme {
      * @return a Color object
      */
     Color getPausedColor();
+
+    /**
+     * Gets the color of the new game text.
+     * 
+     * @return a Color object
+     */
+    Color getNewGameTextColor();
+
+    /**
+     * Gets the color of the new game screen.
+     * 
+     * @return a Color object
+     */
+    Color getNewGameColor();
 }
