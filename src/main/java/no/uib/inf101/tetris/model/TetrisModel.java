@@ -128,6 +128,8 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     @Override
     public void newGame() {
         this.board.clear();
+        this.tetromino = tetrominofactory.getNext();
+        this.tetromino = this.tetromino.shiftedToTopCenterOf(board);
         this.points = 0;
         this.gameState = GameState.NEW_GAME;
     }

@@ -36,7 +36,8 @@ public class TetrisController implements java.awt.event.KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if ((this.model.getGameState() != GameState.GAME_OVER) && (this.model.getGameState() != GameState.NEW_GAME)) {
+
+        if ((this.model.getGameState() == GameState.ACTIVE_GAME)) {
             if (e.getKeyCode() == KeyEvent.VK_LEFT) {
                 this.model.moveTetromino(0, -1);
             } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -51,17 +52,17 @@ public class TetrisController implements java.awt.event.KeyListener {
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 this.model.dropTetromino();
                 timer.restart();
-            } else if (e.getKeyCode() == KeyEvent.VK_P) {
-                if (this.model.getGameState() == GameState.ACTIVE_GAME) {
-                    this.model.pauseGame();
-                    this.song.pause();
-                } else if (this.model.getGameState() == GameState.PAUSED) {
-                    this.model.playGame();
-                    this.song.doUnpauseMidiSounds();
-                }
             }
         }
-
+        if (e.getKeyCode() == KeyEvent.VK_P) {
+            if (this.model.getGameState() == GameState.ACTIVE_GAME) {
+                this.model.pauseGame();
+                this.song.pause();
+            } else if (this.model.getGameState() == GameState.PAUSED) {
+                this.model.playGame();
+                this.song.doUnpauseMidiSounds();
+            }
+        }
         if (this.model.getGameState() == GameState.NEW_GAME) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 this.model.playGame();
@@ -71,10 +72,8 @@ public class TetrisController implements java.awt.event.KeyListener {
         if (this.model.getGameState() == GameState.GAME_OVER) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 this.model.newGame();
-
             }
         }
-
         if (e.getKeyCode() == KeyEvent.VK_M) {
             if (this.song.isRunning()) {
                 this.song.pause();
