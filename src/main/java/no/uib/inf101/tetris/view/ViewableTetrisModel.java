@@ -40,4 +40,9 @@ public interface ViewableTetrisModel {
      * @return the current points
      */
     int getPoints();
+
+    /**
+     * The event that is called when the timer ticks
+     */
+    void clockTick();
 }

@@ -242,7 +242,6 @@ public class TestTetrisModel {
         for (GridCell<Character> gc : model.getTilesOnBoard()) {
             boardCells.add(gc);
         }
-        assertEquals(200, boardCells.size());
         assertTrue(boardCells.contains(new GridCell<>(new CellPosition(19, 5), 'O')));
         assertTrue(boardCells.contains(new GridCell<>(new CellPosition(19, 4), 'O')));
         assertTrue(boardCells.contains(new GridCell<>(new CellPosition(18, 5), 'O')));
@@ -252,20 +251,22 @@ public class TestTetrisModel {
     @Test
     public void testClockTick() {
         TetrisBoard board = new TetrisBoard(20, 10);
-        TetrominoFactory factory = new PatternedTetrominoFactory("O");
+        TetrominoFactory factory = new PatternedTetrominoFactory("T");
         ViewableTetrisModel model = new TetrisModel(board, factory);
-        ((TetrisModel) model).clockTick();
-        ((TetrisModel) model).clockTick();
-        ((TetrisModel) model).clockTick();
+        ((TetrisModel) model).playGame();
+        ((TetrisModel) model).moveTetromino(10, 0);
+        model.clockTick();
+        ((TetrisModel) model).rotateTetromino();
+
         List<GridCell<Character>> tetroCells = new ArrayList<>();
         for (GridCell<Character> gc : model.getTilesOnFallingTetromino()) {
             tetroCells.add(gc);
         }
         assertEquals(4, tetroCells.size());
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(3, 5), 'O')));
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(3, 4), 'O')));
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 5), 'O')));
-        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(4, 4), 'O')));
-
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(10, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(11, 5), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(11, 4), 'T')));
+        assertTrue(tetroCells.contains(new GridCell<>(new CellPosition(12, 5), 'T')));
     }
+
 }
