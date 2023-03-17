@@ -116,6 +116,7 @@ public class Tetromino implements Iterable<GridCell<Character>> {
 
     /**
      * Returns a new tetromino that is a copy of this one, but rotated 90 degrees
+     * clockwise
      * 
      * @return a new tetromino
      */
@@ -124,6 +125,22 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape.length; j++) {
                 newShape[i][j] = shape[shape.length - j - 1][i];
+            }
+        }
+        return new Tetromino(symbol, newShape, pos);
+    }
+
+    /**
+     * Returns a new tetromino that is a copy of this one, but rotated 90 degrees
+     * counter clockwise
+     * 
+     * @return a new tetromino
+     */
+    public Tetromino rotateCounterClockwise() {
+        boolean[][] newShape = new boolean[shape.length][shape.length];
+        for (int i = 0; i < shape.length; i++) {
+            for (int j = 0; j < shape.length; j++) {
+                newShape[i][j] = shape[j][shape.length - i - 1];
             }
         }
         return new Tetromino(symbol, newShape, pos);

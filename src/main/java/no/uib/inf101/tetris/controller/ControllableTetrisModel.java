@@ -19,6 +19,13 @@ public interface ControllableTetrisModel {
     boolean rotateTetromino();
 
     /**
+     * Rotate the falling tetromino counter-clockwise.
+     * 
+     * @return true if the rotation was successful, false otherwise
+     */
+    boolean rotateTetrominoCounterClockwise();
+
+    /**
      * Drops the falling tetromino to the bottom of the board.
      */
     void dropTetromino();

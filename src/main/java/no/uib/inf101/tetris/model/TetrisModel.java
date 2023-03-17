@@ -61,6 +61,16 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     }
 
     @Override
+    public boolean rotateTetrominoCounterClockwise() {
+        Tetromino newTetromino = this.tetromino.rotateCounterClockwise();
+        if (this.board.canPlace(newTetromino)) {
+            this.tetromino = newTetromino;
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     public void dropTetromino() {
         while (this.moveTetromino(1, 0) == true) {
             this.moveTetromino(1, 0);

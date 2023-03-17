@@ -27,7 +27,8 @@ public class TetrisController implements java.awt.event.KeyListener {
         this.timer = new Timer(model.getTimerInterval(), this::clockTick);
         this.song = new TetrisSong();
         timer.start();
-        this.song.run();
+        // TODO: remove this
+        // this.song.run();
     }
 
     @Override
@@ -49,6 +50,8 @@ public class TetrisController implements java.awt.event.KeyListener {
                 }
             } else if (e.getKeyCode() == KeyEvent.VK_UP) {
                 this.model.rotateTetromino();
+            } else if (e.getKeyCode() == KeyEvent.VK_W) {
+                this.model.rotateTetrominoCounterClockwise();
             } else if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                 this.model.dropTetromino();
                 timer.restart();

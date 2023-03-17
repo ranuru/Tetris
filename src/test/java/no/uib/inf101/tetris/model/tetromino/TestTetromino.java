@@ -199,10 +199,26 @@ public class TestTetromino {
     public void testRotateTetromino() {
         Tetromino tetro = Tetromino.newTetromino('S');
         Tetromino tetro2 = Tetromino.newTetromino('S');
+        Tetromino tetro3 = Tetromino.newTetromino('S');
         tetro = tetro.rotate();
         tetro = tetro.rotate();
         tetro2 = tetro2.rotate();
         tetro2 = tetro2.rotate();
         assertEquals(tetro, tetro2);
+        assertNotEquals(tetro, tetro3);
+    }
+
+    @Test
+    public void testRotateTetrominoCounterClockwise() {
+        Tetromino tetro = Tetromino.newTetromino('S');
+        Tetromino tetro2 = Tetromino.newTetromino('S');
+        Tetromino tetro3 = Tetromino.newTetromino('S');
+        tetro = tetro.rotateCounterClockwise();
+        tetro = tetro.rotateCounterClockwise();
+        tetro2 = tetro2.rotateCounterClockwise();
+        tetro2 = tetro2.rotateCounterClockwise();
+        assertEquals(tetro, tetro2);
+        assertNotEquals(tetro, tetro3);
+
     }
 }
