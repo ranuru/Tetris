@@ -83,7 +83,6 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             this.moveTetromino(1, 0);
         }
         this.addTetrominoToBoard();
-        points += this.board.removeFullRows() * 100;
         getNewFallingTetromino();
     }
 
@@ -104,6 +103,8 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         for (GridCell<Character> gridCell : this.tetromino) {
             this.board.set(gridCell.pos(), gridCell.value());
         }
+
+        points += this.board.removeFullRows() * 100;
         this.tetromino = tetrominofactory.getNext();
     }
 
