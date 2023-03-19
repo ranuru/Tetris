@@ -6,6 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.awt.Color;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Testing the class DefaultColorTheme
+ */
 public class TestDefaultColorTheme {
 
     @Test

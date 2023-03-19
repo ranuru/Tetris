@@ -19,6 +19,13 @@ public class Tetromino implements Iterable<GridCell<Character>> {
     private boolean[][] shape;
     private CellPosition pos;
 
+    /**
+     * Creates a new tetromino
+     * 
+     * @param symbol the symbol of the tetromino
+     * @param shape  the shape of the tetromino
+     * @param pos    the position of the tetromino
+     */
     private Tetromino(char symbol, boolean[][] shape, CellPosition pos) {
         this.symbol = symbol;
         this.shape = shape;
@@ -146,14 +153,29 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         return new Tetromino(symbol, newShape, pos);
     }
 
+    /**
+     * Returns the symbol of this tetromino
+     * 
+     * @return character symbol
+     */
     public char getSymbol() {
         return this.symbol;
     }
 
+    /**
+     * Returns the shape of this tetromino
+     * 
+     * @return boolean[][] shape
+     */
     public boolean[][] getShape() {
         return this.shape;
     }
 
+    /**
+     * Returns the position of this tetromino
+     * 
+     * @return CellPosition pos
+     */
     public CellPosition getPos() {
         return this.pos;
     }

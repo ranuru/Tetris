@@ -11,16 +11,29 @@ import no.uib.inf101.grid.GridDimension;
  */
 public class CellPositionToPixelConverter {
 
-  Rectangle2D box;
-  GridDimension gd;
-  double margin;
+  private Rectangle2D box;
+  private GridDimension gd;
+  private double margin;
 
+  /**
+   * Create a new converter
+   * 
+   * @param box    The box to draw in
+   * @param gd     The grid dimension
+   * @param margin The margin between cells
+   */
   public CellPositionToPixelConverter(Rectangle2D box, GridDimension gd, double margin) {
     this.box = box;
     this.gd = gd;
     this.margin = margin;
   }
 
+  /**
+   * Get the bounds of a cell
+   * 
+   * @param cp The cell position
+   * @return The bounds of the cell
+   */
   public Rectangle2D getBoundsForCell(CellPosition cp) {
     double cellWidth = (box.getWidth() - (gd.cols() + 1) * margin) / gd.cols();
     double cellHeight = (box.getHeight() - (gd.rows() + 1) * margin) / gd.rows();

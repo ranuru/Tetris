@@ -18,6 +18,14 @@ public class Grid<E> implements IGrid<E> {
     private List<List<E>> grid;
     private List<E> cell;
 
+    /**
+     * Creates a grid with the specified number of rows and columns, and fills it
+     * with the specified defaultValue
+     * 
+     * @param row          the number of rows in the grid
+     * @param col          the number of cols in the grid
+     * @param defaultValue the value to fill the grid with
+     */
     public Grid(int row, int col, E defaultValue) {
         this.row = row;
         this.col = col;
@@ -26,6 +34,13 @@ public class Grid<E> implements IGrid<E> {
         fillGrid(row, col, defaultValue);
     }
 
+    /**
+     * Creates a grid with the specified number of rows and columns, and fills it
+     * with null
+     * 
+     * @param row the number of rows in the grid
+     * @param col the number of cols in the grid
+     */
     public Grid(int row, int col) {
         this.row = row;
         this.col = col;
@@ -37,8 +52,8 @@ public class Grid<E> implements IGrid<E> {
     /**
      * Fills the grid with the specificed defaultValue
      * 
-     * @param row the number of rows in the grid
-     * @param col the number of cols in the grid
+     * @param row          the number of rows in the grid
+     * @param col          the number of cols in the grid
      * @param defaultValue the value to fill the grid with
      */
     public void fillGrid(int row, int col, E defaultValue) {

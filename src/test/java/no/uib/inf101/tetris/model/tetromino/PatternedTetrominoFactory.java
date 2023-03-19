@@ -1,7 +1,8 @@
 package no.uib.inf101.tetris.model.tetromino;
 
-/** Class that creates tetrominos in a pattern
- *  
+/**
+ * Class that creates tetrominos in a pattern
+ * 
  */
 
 public class PatternedTetrominoFactory implements TetrominoFactory {
@@ -9,6 +10,12 @@ public class PatternedTetrominoFactory implements TetrominoFactory {
     String s;
     String string;
 
+    /**
+     * Create a new patterned tetromino factory
+     * 
+     * @param string
+     *               the pattern
+     */
     public PatternedTetrominoFactory(String string) {
         this.s = string;
         this.string = string;
@@ -24,5 +31,5 @@ public class PatternedTetrominoFactory implements TetrominoFactory {
         s = s.substring(1);
         return Tetromino.newTetromino(character);
     }
-    
+
 }

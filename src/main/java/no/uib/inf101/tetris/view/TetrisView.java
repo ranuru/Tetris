@@ -29,6 +29,11 @@ public class TetrisView extends JPanel {
     private double width;
     private double height;
 
+    /**
+     * Creates a new TetrisView
+     * 
+     * @param model the model to view
+     */
     public TetrisView(ViewableTetrisModel model) {
         this.model = model;
         this.setFocusable(true);

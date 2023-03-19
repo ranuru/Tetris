@@ -16,6 +16,13 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
 
     private TetrisBoard board;
 
+    /**
+     * Creates a new TetrisModel with a Tetromino in the top center and the
+     * gamestate in NEW_GAME
+     * 
+     * @param board            the board to draw on
+     * @param tetrominofactory the factory to get tetrominos from
+     */
     public TetrisModel(TetrisBoard board, TetrominoFactory tetrominofactory) {
         this.board = board;
         this.tetrominofactory = tetrominofactory;
@@ -90,6 +97,9 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         }
     }
 
+    /**
+     * Adds the current tetromino to the board
+     */
     public void addTetrominoToBoard() {
         for (GridCell<Character> gridCell : this.tetromino) {
             this.board.set(gridCell.pos(), gridCell.value());

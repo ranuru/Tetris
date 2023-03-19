@@ -14,11 +14,17 @@ import no.uib.inf101.tetris.view.TetrisView;
  */
 public class TetrisController implements java.awt.event.KeyListener {
 
-    ControllableTetrisModel model;
-    TetrisView view;
-    Timer timer;
-    TetrisSong song;
+    private ControllableTetrisModel model;
+    private TetrisView view;
+    private Timer timer;
+    private TetrisSong song;
 
+    /**
+     * Create a new controller for the tetris game
+     * 
+     * @param model the model to control
+     * @param view  the view to control
+     */
     public TetrisController(ControllableTetrisModel model, TetrisView view) {
         this.model = model;
         this.view = view;
@@ -27,8 +33,7 @@ public class TetrisController implements java.awt.event.KeyListener {
         this.timer = new Timer(model.getTimerInterval(), this::clockTick);
         this.song = new TetrisSong();
         timer.start();
-        // TODO: remove this
-        // this.song.run();
+        this.song.run();
     }
 
     @Override

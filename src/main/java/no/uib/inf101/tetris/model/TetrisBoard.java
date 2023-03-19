@@ -4,7 +4,6 @@ import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.Grid;
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.tetris.model.tetromino.Tetromino;
-import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
 /**
  * Class for the tetris board
@@ -14,14 +13,19 @@ public class TetrisBoard extends Grid<Character> {
 
     private int row;
     private int col;
-    ViewableTetrisModel model;
 
+    /**
+     * Creates a new TetrisBoard
+     * 
+     * @param row
+     * @param col
+     */
     public TetrisBoard(int row, int col) {
         super(row, col);
         this.row = row;
         this.col = col;
         this.defaultValue = '-';
-        super.fillGrid(row, col, defaultValue);
+        clear();
     }
 
     /**
@@ -123,7 +127,10 @@ public class TetrisBoard extends Grid<Character> {
         return rowsRemoved;
     }
 
+    /**
+     * Clears the board
+     */
     public void clear() {
-        super.fillGrid(row, col, defaultValue);
+        super.fillGrid(this.row, this.col, this.defaultValue);
     }
 }

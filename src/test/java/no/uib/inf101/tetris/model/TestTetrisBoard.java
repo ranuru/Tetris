@@ -7,6 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestTetrisBoard {
 
+    /**
+     * Create a TetrisBoard with the given contents.
+     * 
+     * @param s The contents of the board, one string per row.
+     * @return a TetriBoard with the given contents.
+     */
     public TetrisBoard getTetrisBoardWithContents(String[] s) {
         TetrisBoard board = new TetrisBoard(s.length, s[0].length());
         for (int y = 0; y < s.length; y++) {
