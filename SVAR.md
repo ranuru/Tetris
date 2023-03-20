@@ -9,11 +9,12 @@ Det jeg har lært om Java og objekt-orientert programmering under arbeidet med d
 
 ## Hva er det neste du ønsker å lære om Java og programmering?
 
-Det neste jeg har lyst å lære om Java og programmering er bare generelt sett mer avanserte ting, å kunne lage mer avanserte programmer. Jeg har også lyst til å lære å lage programmer som kan sendes og 'publiseres'. Jeg har også lyst til å lære å skrive så effektiv kode som mulig.
+Det neste jeg har lyst å lære om Java og programmering er bare generelt sett mer avanserte ting, å kunne lage mer avanserte programmer. Jeg har også lyst til å lære å lage programmer som kan sendes og 'publiseres'. Jeg har også lyst til å lære å skrive så effektiv kode som mulig, slik at å skrive et program ikke er like skummelt og heller mer strukturert. 
 
 ## Hvilke grep gjør vi for å øke modulariteten i koden? Gi noen eksempeler.
 
 Grepene vi gjør for å øke modulariteten i koden er:
-1. Å dele opp koden i flere klasser, sortert til hvilken del av spillet det representerer. For eks. en klasse for Tetromino-formene, en klasse for Tetromino-brikken, en klasse for alle farger som noensinne blir brukt, osv. 
+1. Å dele opp koden i flere klasser, sortert til hvilken del av spillet det representerer. For eks. en klasse for Tetromino-formene, en klasse for Tetromino-brikken, en klasse for alle farger som noensinne blir brukt, osv.
 2. Vi har delt koden inn i 3 hoveddeler: View, Model og Controller. Dette gjør det veldig lett å modifisere koden senere, og det er også veldig lett å se hva som er hva. Controller påvirker model, og model påvirker view.
 3. Vi har delt opp koden i flere små metoder og variabler, som gjør det enklere å lese koden og forstå hva som skjer. Det åpner også koden opp for enkel modifisering og debugging, ettersom man kan lett spore ned hvor feilen skjer og fortere løse problemer.
+4. Gjenbruk  av kode. Dette gjør det mye enklere som tidligere nevnt å modifisere koden senere, ettersom man kun trenger å forandre en plass, som er lett å finne fram.
