@@ -32,8 +32,13 @@ public class Tetromino implements Iterable<GridCell<Character>> {
         this.pos = pos;
     }
 
+    /**
+     * Returns a new Tetromino with the given symbol
+     * 
+     * @param symbol
+     * @return a new Tetromino
+     */
     static Tetromino newTetromino(char symbol) {
-
         CellPosition pos = new CellPosition(0, 0);
         boolean[][] shape = switch (symbol) {
             case 'L' -> TetrominoShapes.shapeL();

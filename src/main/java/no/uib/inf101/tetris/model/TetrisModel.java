@@ -7,13 +7,16 @@ import no.uib.inf101.tetris.model.tetromino.Tetromino;
 import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
 import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
+/**
+ * Class that represents the model of the tetris game
+ * 
+ */
 public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel {
 
     private TetrominoFactory tetrominofactory;
     private Tetromino tetromino;
     private GameState gameState;
     private int points = 0;
-
     private TetrisBoard board;
 
     /**

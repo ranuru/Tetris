@@ -46,8 +46,6 @@ public interface ControllableTetrisModel {
 
     /**
      * Event that is called when the timer ticks.
-     * 
-     * 
      */
     void clockTick();
 

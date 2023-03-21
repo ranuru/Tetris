@@ -15,7 +15,7 @@ public class TetrisBoard extends Grid<Character> {
     private int col;
 
     /**
-     * Creates a new TetrisBoard
+     * Creates a new TetrisBoard with the given rows and cols
      * 
      * @param row
      * @param col
