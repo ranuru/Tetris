@@ -18,7 +18,7 @@ public class TetrisMain {
     TetrominoFactory tetrominofactory = new RandomTetrominoFactory();
     TetrisModel model = new TetrisModel(board, tetrominofactory);
     TetrisView view = new TetrisView(model);
-    TetrisController controller = new TetrisController(model, view);
+    new TetrisController(model, view);
 
     // The JFrame is the "root" application window.
     // We here set som properties of the main window,
